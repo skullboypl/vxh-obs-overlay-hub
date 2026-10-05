@@ -42,7 +42,7 @@
 - Jeden szablon generuje wszystkie strony, a treść (PL/EN) siedzi w `src/content.ts`.
 - Na każdej stronie: `canonical`, `hreflang`, Open Graph, Twitter Card.
 - Dane strukturalne JSON-LD: `Organization`, `WebSite`, `BreadcrumbList`, `WebApplication`, `FAQPage`, `HowTo`.
-- Sitemapa (`sitemap-index.xml`), `robots.txt` i `llms.txt` dla wyszukiwarek i modeli AI.
+- Sitemapa (`sitemap.xml`, generowana z `src/pages/sitemap.xml.ts`, z `hreflang` i `lastmod`), `robots.txt` i `llms.txt` dla wyszukiwarek i modeli AI.
 - Statyczny HTML z minimalnym JavaScriptem, obrazy w WebP.
 
 ## Stack
