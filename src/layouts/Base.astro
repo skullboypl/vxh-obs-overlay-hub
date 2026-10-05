@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
-import { SITE, UI, TOOL_URL, urlFor, type Lang, type PageId } from '../content';
+import Socials from '../components/Socials.astro';
+import { SITE, UI, TOOL_URL, LINKS, PROMO, REPO, urlFor, type Lang, type PageId } from '../content';
 interface Props { lang: Lang; id: PageId; title: string; description: string; crumb: string; jsonLd?: object[]; }
 const { lang, id, title, description, crumb, jsonLd = [] } = Astro.props;
 const ui = UI[lang];
@@ -8,9 +9,10 @@ const canonical = SITE + urlFor(id, lang);
 const og = SITE + '/img/og.png';
 const theme = id.startsWith('faceit') ? 't-faceit' : id.startsWith('lol') ? 't-lol' : '';
 const ld = [
-  { '@context': 'https://schema.org', '@type': 'Organization', name: 'VXH – Visual eXtras Hub', url: SITE + '/', logo: SITE + '/logo.png' },
+  { '@context': 'https://schema.org', '@type': 'Organization', name: 'VXH – Visual eXtras Hub', url: SITE + '/', logo: SITE + '/logo.png', sameAs: LINKS.socials.map((x) => x.url) },
   ...jsonLd,
 ];
+const P = PROMO[lang];
 const L = {
   pl: { start: 'Start', tools: 'Narzędzia', guides: 'Poradniki OBS', info: 'Informacje', home: 'Strona główna', fl: 'Układy FACEIT', ll: 'Układy LoL', gens: 'Generatory', note: 'Darmowe narzędzia i overlaye dla streamerów.', menu: 'Menu' },
   en: { start: 'Start', tools: 'Tools', guides: 'OBS guides', info: 'Information', home: 'Home', fl: 'FACEIT layouts', ll: 'LoL layouts', gens: 'Generators', note: 'Free tools and overlays for streamers.', menu: 'Menu' },
@@ -102,7 +104,15 @@ const here = groups.find((g) => g.items.some((it) => it.id === id));
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
       </a>
     </div>
-    <div class="sidebar-note">{L.note}</div>
+    <div class="side-promo">
+      <p class="side-promo-title">{P.sideTitle}</p>
+      <p class="side-promo-text">{P.sideText}</p>
+      <a class="cta" href={LINKS.services} rel="noopener">{P.services}</a>
+      <a class="cta alt donate" href={LINKS.donate} rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>{P.donateShort}
+      </a>
+      <Socials class="side" />
+    </div>
   </header>
 
   <div class="workspace">
@@ -121,8 +131,32 @@ const here = groups.find((g) => g.items.some((it) => it.id === id));
         <span class="obs-tag"><i></i>OBS · STREAMLABS</span>
       </span>
     </div>
-    <main id="main"><slot /></main>
-    <footer class="site"><small>{ui.footerLegal}</small></footer>
+    <main id="main"><slot />
+      <section class="promo" aria-label={P.sideTitle}>
+        <div class="promo-col">
+          <h2>{P.title}</h2>
+          <p>{P.text}</p>
+          <a class="cta" href={LINKS.services} rel="noopener">{P.services}</a>
+        </div>
+        <div class="promo-col">
+          <h2>{P.donateTitle}</h2>
+          <p>{P.donateText}</p>
+          <a class="cta alt" href={LINKS.donate} rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>{P.donate}
+          </a>
+        </div>
+      </section>
+    </main>
+    <footer class="site">
+      <Socials class="foot" />
+      <p class="foot-links">
+        <a href={REPO} rel="noopener" target="_blank">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" /></svg>
+          {lang === 'pl' ? 'Kod źródłowy tej strony na GitHubie' : 'Source code of this site on GitHub'}
+        </a>
+      </p>
+      <small>{ui.footerLegal}</small>
+    </footer>
   </div>
 
   <script is:inline>

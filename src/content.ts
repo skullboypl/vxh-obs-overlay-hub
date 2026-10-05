@@ -7,6 +7,50 @@ export const TOOL_URL = {
   lol: 'https://lolbanner.vxh.pl/',
 } as const;
 
+export const REPO = 'https://github.com/skullboypl/vxh-obs-overlay-hub';
+
+export const LINKS = {
+  services: 'https://uslugi.skullmedia.pl/',
+  donate: 'https://donate.skullmedia.pl/',
+  hub: 'https://linki.skullmedia.pl/',
+  socials: [
+    { id: 'youtube', label: 'YouTube', url: 'https://www.youtube.com/channel/UCty2SOdhdkf8b5FbQFeBvkA' },
+    { id: 'tiktok', label: 'TikTok', url: 'https://www.tiktok.com/@skullboypl' },
+    { id: 'twitch', label: 'Twitch', url: 'https://www.twitch.tv/skullboypl' },
+    { id: 'instagram', label: 'Instagram', url: 'https://www.instagram.com/skullboy_pl/' },
+    { id: 'spotify', label: 'Spotify', url: 'https://open.spotify.com/artist/2PkMLa3mU4oIIMwsZFMuTq' },
+    { id: 'discord', label: 'Discord', url: 'https://discord.skullmedia.pl/' },
+    { id: 'github', label: 'GitHub', url: 'https://github.com/skullboypl' },
+  ],
+} as const;
+
+export const PROMO = {
+  pl: {
+    title: 'Potrzebujesz strony, aplikacji albo własnego overlayu?',
+    text: 'SkullMedia robi strony WWW, aplikacje web i mobile oraz narzędzia na zamówienie. Te generatory też stąd.',
+    services: 'Zobacz usługi',
+    donateTitle: 'Podoba Ci się VXH?',
+    donateText: 'Narzędzia są darmowe. Jeśli Ci pomogły, możesz wesprzeć ich rozwój.',
+    donate: 'Wesprzyj (Donate)',
+    follow: 'Obserwuj',
+    sideTitle: 'SkullMedia',
+    sideText: 'Strony, aplikacje i overlaye na zamówienie.',
+    donateShort: 'Donate',
+  },
+  en: {
+    title: 'Need a website, an app or a custom overlay?',
+    text: 'SkullMedia builds websites, web and mobile apps and custom tools on request. These generators come from there too.',
+    services: 'See services',
+    donateTitle: 'Like VXH?',
+    donateText: 'The tools are free. If they helped you, you can support their development.',
+    donate: 'Support (Donate)',
+    follow: 'Follow',
+    sideTitle: 'SkullMedia',
+    sideText: 'Websites, apps and overlays on request.',
+    donateShort: 'Donate',
+  },
+} as const;
+
 export const FACEIT_SOLO = ['Prime', 'Showcase', 'Spotlight', 'Broadcast', 'Rail', 'Focus', 'Orbit', 'Halo', 'Pulse', 'Ticker', 'Slab', 'Gauge', 'Card', 'Reel', 'Ribbon', 'Tower', 'Dials', 'Marquee'];
 export const FACEIT_VERSUS = ['Duel', 'Edge', 'Faceoff', 'Clash', 'Tug', 'Rivals', 'Tally', 'Overlay', 'Ladder', 'Matchup', 'Scoreboard', 'Cycle', 'Surge'];
 export const LOL_LAYOUTS = ['Prime', 'Broadcast', 'Compact', 'Showcase', 'Split', 'Minimal', 'Tower', 'Scoreboard'];
