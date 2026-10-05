@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Recommend from '../components/Recommend.astro';
 import { PAGES, PATHS, UI, SITE, TOOL_URL, LOL_LAYOUT_META, urlFor, type Lang, type PageId } from '../content';
 
 export function getStaticPaths() {
@@ -121,6 +122,8 @@ const shotAlt = page.app === 'faceit'
       </>
     )}
 
+    {id === 'home' && <Recommend lang={lang} />}
+
     {shot && (
       <div class="window">
         <div class="window-bar"><i></i><i></i><i></i><span>{shotUrl}</span></div>
@@ -165,6 +168,8 @@ const shotAlt = page.app === 'faceit'
         ))}
       </div>
     )}
+
+    {(id === 'obsGuide' || id === 'browserSource' || id === 'streamlabs') && <Recommend lang={lang} />}
 
     {page.faq && (
       <section class="panel faq faq-panel">

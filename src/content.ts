@@ -7,6 +7,13 @@ export const TOOL_URL = {
   lol: 'https://lolbanner.vxh.pl/',
 } as const;
 
+export const SMOOTHWIZARD = {
+  url: 'https://smoothwizard.com/',
+  logo: 'https://smoothwizard.com/wp-content/uploads/2023/12/SmoothWizard-Logo-e1701539638732.png',
+  pl: { label: 'Polecamy:', sub: 'Zyskaj FPSy jednym kliknięciem', menu: 'Zwiększ swoje FPS', group: 'Polecamy' },
+  en: { label: 'Recommended:', sub: 'Gain FPS with one click', menu: 'Boost your FPS', group: 'Recommended' },
+} as const;
+
 export const REPO = 'https://github.com/skullboypl/vxh-obs-overlay-hub';
 
 export const LINKS = {

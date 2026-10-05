@@ -1,0 +1,16 @@
+---
+import { SMOOTHWIZARD, type Lang } from '../content';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = SMOOTHWIZARD[lang];
+---
+<div class="recommend">
+  <span class="recommend-label">{t.label}</span>
+  <a class="recommend-card" href={SMOOTHWIZARD.url} target="_blank" rel="noopener">
+    <img src={SMOOTHWIZARD.logo} alt="SmoothWizard" width="40" height="40" loading="lazy" />
+    <span>
+      <strong>SmoothWizard</strong>
+      <small>{t.sub}</small>
+    </span>
+  </a>
+</div>
