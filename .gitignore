@@ -1,0 +1,11 @@
+node_modules
+dist
+.astro
+.env
+.env.*
+!.env.example
+deploy-key*
+*.pem
+*.key
+.DS_Store
+Thumbs.db

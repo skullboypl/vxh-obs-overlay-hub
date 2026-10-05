@@ -1,0 +1,185 @@
+---
+import Base from '../layouts/Base.astro';
+import { PAGES, PATHS, UI, SITE, TOOL_URL, LOL_LAYOUT_META, urlFor, type Lang, type PageId } from '../content';
+
+export function getStaticPaths() {
+  const out: { params: { slug: string | undefined }; props: { lang: Lang; id: PageId } }[] = [];
+  (['pl', 'en'] as Lang[]).forEach((lang) => {
+    (Object.keys(PAGES[lang]) as PageId[]).forEach((id) => {
+      const path = (lang === 'en' ? 'en/' : '') + PATHS[id][lang];
+      out.push({ params: { slug: path.replace(/\/$/, '') || undefined }, props: { lang, id } });
+    });
+  });
+  return out;
+}
+
+const { lang, id } = Astro.props as { lang: Lang; id: PageId };
+const page = PAGES[lang][id];
+const ui = UI[lang];
+const url = SITE + urlFor(id, lang);
+
+const jsonLd: object[] = [];
+if (id === 'home') {
+  jsonLd.push({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'VXH – Visual eXtras Hub', url: SITE + '/', inLanguage: lang });
+} else {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: ui.breadcrumbHome, item: SITE + urlFor('home', lang) },
+      { '@type': 'ListItem', position: 2, name: page.h1, item: url },
+    ],
+  });
+}
+if (page.app) {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: page.app === 'faceit' ? 'FACEIT Banner Studio' : 'LoL Banner Studio',
+    applicationCategory: 'MultimediaApplication',
+    operatingSystem: 'Web',
+    url: page.app === 'faceit' ? TOOL_URL.faceit : TOOL_URL.lol,
+    description: page.description,
+    inLanguage: lang,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'PLN' },
+  });
+}
+if (page.faq?.length) {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: page.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  });
+}
+const steps = page.sections?.find((s) => s.ol)?.ol ?? [];
+if (page.kind === 'article' && !page.app && steps.length) {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: page.h1,
+    description: page.description,
+    step: steps.map((t) => ({ '@type': 'HowToStep', text: t })),
+  });
+}
+
+const tools = [
+  { id: 'faceit' as const, name: 'FACEIT Banner Studio', img: '/img/faceit-preview.webp', c: '#ff5900', hover: '#ff7424', tag: 'CS2' },
+  { id: 'lol' as const, name: 'LoL Banner Studio', img: '/img/lol-preview.webp', c: '#eb3d4d', hover: '#f25a68', tag: 'League of Legends' },
+];
+const toolDesc = {
+  faceit: { pl: 'ELO, level i statystyki CS2. 18 układów solo i 13 układów VERSUS.', en: 'ELO, level and CS2 stats. 18 solo and 13 VERSUS layouts.' },
+  lol: { pl: 'Ranga Solo/Duo i Flex, LP i winrate z Riot ID. 8 układów.', en: 'Solo/Duo and Flex rank, LP and win rate from your Riot ID. 8 layouts.' },
+};
+const heroH1 = id === 'home' ? (lang === 'pl' ? 'Banery na Twój stream' : 'Banners for your stream') : page.h1;
+const shot = page.app === 'faceit' ? '/img/faceit-generator.webp' : page.app === 'lol' ? '/img/lol-generator.webp' : undefined;
+const shotUrl = page.app === 'faceit' ? 'faceitbanner.vxh.pl' : 'lolbanner.vxh.pl';
+const shotAlt = page.app === 'faceit'
+  ? (lang === 'pl' ? 'Generator FACEIT Banner Studio z podglądem na żywo' : 'FACEIT Banner Studio generator with live preview')
+  : (lang === 'pl' ? 'Generator LoL Banner Studio z podglądem na żywo' : 'LoL Banner Studio generator with live preview');
+---
+<Base lang={lang} id={id} title={page.title} description={page.description} crumb={page.h1} jsonLd={jsonLd}>
+  <article>
+    <header class="heading">
+      {page.eyebrow && <p class="eyebrow">{page.eyebrow}</p>}
+      <h1>{heroH1}<em>.</em></h1>
+      <p class="lead">{page.lead}</p>
+      {page.cta && (
+        <div class="btns">
+          {page.cta.map((c, i) => <a class:list={['cta', i > 0 && 'alt']} href={c.href}>{c.label}</a>)}
+        </div>
+      )}
+    </header>
+
+    {id === 'home' && (
+      <>
+        <div class="hero-shots">
+          <figure class="shot f">
+            <img src="/img/faceit-preview.webp" alt={lang === 'pl' ? 'Baner FACEIT z ELO i statystykami CS2 w podglądzie generatora' : 'FACEIT banner with ELO and CS2 stats in the generator preview'} width="1000" height="490" fetchpriority="high" />
+            <figcaption>FACEIT</figcaption>
+          </figure>
+          <figure class="shot l">
+            <img src="/img/lol-preview.webp" alt={lang === 'pl' ? 'Baner rangi League of Legends w podglądzie generatora' : 'League of Legends rank banner in the generator preview'} width="1000" height="530" fetchpriority="high" />
+            <figcaption>League of Legends</figcaption>
+          </figure>
+        </div>
+        <div class="cards">
+          {tools.map((t) => (
+            <article class="card" style={`--c:${t.c}`}>
+              <div class="img"><img src={t.img} alt="" width="1000" height="500" loading="lazy" /></div>
+              <div class="body">
+                <span class="tag">{t.tag}</span>
+                <h3>{t.name}</h3>
+                <p>{toolDesc[t.id][lang]}</p>
+                <div class="btns">
+                  <a class="cta" style={`--btn:${t.c};--btn-h:${t.hover};--btn-text:#fff`} href={t.id === 'faceit' ? TOOL_URL.faceit : TOOL_URL.lol}>{ui.openTool}</a>
+                  <a class="cta alt" href={urlFor(t.id, lang)}>{lang === 'pl' ? 'Dowiedz się więcej' : 'Learn more'}</a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </>
+    )}
+
+    {shot && (
+      <div class="window">
+        <div class="window-bar"><i></i><i></i><i></i><span>{shotUrl}</span></div>
+        <img src={shot} alt={shotAlt} width="1600" height="1000" fetchpriority="high" />
+      </div>
+    )}
+
+    {id === 'faceitLayouts' && (
+      <>
+        <div class="sect-head"><h2>{lang === 'pl' ? 'Układy solo' : 'Solo layouts'}</h2><small>18</small></div>
+        <div class="gallery"><img src="/img/faceit-solo.webp" alt={lang === 'pl' ? 'Galeria układów solo FACEIT Banner Studio' : 'Gallery of FACEIT Banner Studio solo layouts'} width="1600" height="1100" loading="lazy" /></div>
+        <div class="pills">{page.layoutGroups?.[0]?.items.map((n) => <span>{n}</span>)}</div>
+        <div class="sect-head"><h2>VERSUS</h2><small>13</small></div>
+        <div class="gallery"><img src="/img/faceit-versus.webp" alt={lang === 'pl' ? 'Galeria układów VERSUS FACEIT Banner Studio' : 'Gallery of FACEIT Banner Studio VERSUS layouts'} width="1600" height="550" loading="lazy" /></div>
+        <div class="pills">{page.layoutGroups?.[1]?.items.map((n) => <span>{n}</span>)}</div>
+      </>
+    )}
+
+    {id === 'lolLayouts' && (
+      <>
+        <div class="sect-head"><h2>{lang === 'pl' ? 'Wszystkie układy' : 'All layouts'}</h2><small>8</small></div>
+        <div class="layouts">
+          {LOL_LAYOUT_META.map((m) => (
+            <a class="lay" href={`${TOOL_URL.lol}?style=${m.id}`} rel="noopener">
+              <img src={`/img/lol-${m.id}.webp`} alt={m.name} width="900" height="480" loading="lazy" />
+              <div><strong>{m.name}</strong><span>{m[lang]} · {m.size}</span></div>
+            </a>
+          ))}
+        </div>
+      </>
+    )}
+
+    {page.sections && (
+      <div class="panel" style="margin-top:28px">
+        {page.sections.map((s) => (
+          <>
+            <h2>{s.h2}</h2>
+            {s.p?.map((t) => <p>{t}</p>)}
+            {s.ul && <ul>{s.ul.map((t) => <li>{t}</li>)}</ul>}
+            {s.ol && <ol class="steps">{s.ol.map((t) => <li><span>{t}</span></li>)}</ol>}
+          </>
+        ))}
+      </div>
+    )}
+
+    {page.faq && (
+      <section class="panel faq faq-panel">
+        <h2>{ui.faqTitle}</h2>
+        {page.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+      </section>
+    )}
+
+    {page.related && (
+      <>
+        <p class="sec-label">{ui.relatedTitle}</p>
+        <div class="related">
+          {page.related.map((r) => <a href={urlFor(r, lang)}>{PAGES[lang][r].h1}</a>)}
+        </div>
+      </>
+    )}
+  </article>
+</Base>

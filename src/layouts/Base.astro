@@ -1,0 +1,162 @@
+---
+import '../styles/global.css';
+import { SITE, UI, TOOL_URL, urlFor, type Lang, type PageId } from '../content';
+interface Props { lang: Lang; id: PageId; title: string; description: string; crumb: string; jsonLd?: object[]; }
+const { lang, id, title, description, crumb, jsonLd = [] } = Astro.props;
+const ui = UI[lang];
+const canonical = SITE + urlFor(id, lang);
+const og = SITE + '/img/og.png';
+const theme = id.startsWith('faceit') ? 't-faceit' : id.startsWith('lol') ? 't-lol' : '';
+const ld = [
+  { '@context': 'https://schema.org', '@type': 'Organization', name: 'VXH – Visual eXtras Hub', url: SITE + '/', logo: SITE + '/logo.png' },
+  ...jsonLd,
+];
+const L = {
+  pl: { start: 'Start', tools: 'Narzędzia', guides: 'Poradniki OBS', info: 'Informacje', home: 'Strona główna', fl: 'Układy FACEIT', ll: 'Układy LoL', gens: 'Generatory', note: 'Darmowe narzędzia i overlaye dla streamerów.', menu: 'Menu' },
+  en: { start: 'Start', tools: 'Tools', guides: 'OBS guides', info: 'Information', home: 'Home', fl: 'FACEIT layouts', ll: 'LoL layouts', gens: 'Generators', note: 'Free tools and overlays for streamers.', menu: 'Menu' },
+}[lang];
+const groups = [
+  { title: L.start, icon: 'book', items: [{ id: 'home' as PageId, label: L.home }] },
+  { title: L.tools, icon: 'palette', items: [
+    { id: 'faceit' as PageId, label: ui.nav.faceit },
+    { id: 'faceitLayouts' as PageId, label: L.fl },
+    { id: 'lol' as PageId, label: ui.nav.lol },
+    { id: 'lolLayouts' as PageId, label: L.ll },
+  ] },
+  { title: L.guides, icon: 'chart', items: [
+    { id: 'obsGuide' as PageId, label: 'OBS Studio' },
+    { id: 'streamlabs' as PageId, label: 'Streamlabs' },
+    { id: 'browserSource' as PageId, label: 'Browser Source' },
+  ] },
+  { title: L.info, icon: 'info', items: [
+    { id: 'faq' as PageId, label: ui.nav.faq },
+    { id: 'about' as PageId, label: ui.nav.about },
+  ] },
+];
+const icons: Record<string, string> = {
+  book: 'M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5v-15ZM5 19.5A1.5 1.5 0 0 0 6.5 21H19M9 7.5h6M9 11h4',
+  palette: 'M12 3a9 9 0 1 0 0 18h1.5a2 2 0 0 0 0-4H13a1.5 1.5 0 0 1 0-3h3a5 5 0 0 0 5-5c0-3.5-4-6-9-6Z',
+  chart: 'M4 20h16M6 16v-5m6 5V4m6 12V8',
+  info: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-9v5m0-9v.01',
+};
+const here = groups.find((g) => g.items.some((it) => it.id === id));
+---
+<!doctype html>
+<html lang={ui.htmlLang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#0b0b0c" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <link rel="canonical" href={canonical} />
+  <link rel="alternate" hreflang="pl" href={SITE + urlFor(id, 'pl')} />
+  <link rel="alternate" hreflang="en" href={SITE + urlFor(id, 'en')} />
+  <link rel="alternate" hreflang="x-default" href={SITE + urlFor(id, 'pl')} />
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="VXH – Visual eXtras Hub" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={og} />
+  <meta property="og:locale" content={lang === 'pl' ? 'pl_PL' : 'en_US'} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={og} />
+  {ld.map((o) => <script type="application/ld+json" set:html={JSON.stringify(o)} />)}
+</head>
+<body class={theme}>
+  <a class="skip" href="#main">{ui.skip}</a>
+  <header class="sidebar" id="sidebar">
+    <a class="brand" href={urlFor('home', lang)} aria-label="VXH – Visual eXtras Hub">
+      <img src="/logo.svg" alt="" width="42" height="42" />
+      <span><b>VXH</b><span class="brand-subtitle">VISUAL EXTRAS HUB</span></span>
+    </a>
+    <nav class="docs-nav" aria-label={L.menu}>
+      {groups.map((g) => (
+        <div class="group">
+          <p class="group-title">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icons[g.icon]} /></svg>{g.title}
+          </p>
+          {g.items.map((it) => <a href={urlFor(it.id, lang)} aria-current={it.id === id ? 'page' : undefined}>{it.label}</a>)}
+        </div>
+      ))}
+    </nav>
+    <div class="gens">
+      <p>{L.gens}</p>
+      <a class="gen" style="--dot:#ff5900" href={TOOL_URL.faceit} rel="noopener">
+        <i></i>FACEIT Banner
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+      </a>
+      <a class="gen" style="--dot:#eb3d4d" href={TOOL_URL.lol} rel="noopener">
+        <i></i>LoL Banner
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+      </a>
+    </div>
+    <div class="sidebar-note">{L.note}</div>
+  </header>
+
+  <div class="workspace">
+    <div class="topbar">
+      <span class="topbar-l">
+        <button class="menu-btn" id="menu-btn" type="button" aria-label={L.menu} aria-controls="sidebar" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        </button>
+        <span><a href={urlFor('home', lang)}>VXH</a>{here && id !== 'home' && (<><span class="divider">/</span><a href={urlFor(here.items[0].id, lang)}>{here.title}</a></>)}{id !== 'home' && (<><span class="divider">/</span><strong>{crumb}</strong></>)}</span>
+      </span>
+      <span class="topbar-actions">
+        <span class="seg" role="group" aria-label="Language">
+          {lang === 'pl' ? <span>PL</span> : <a href={urlFor(id, 'pl')} hreflang="pl" lang="pl">PL</a>}
+          {lang === 'en' ? <span>EN</span> : <a href={urlFor(id, 'en')} hreflang="en" lang="en">EN</a>}
+        </span>
+        <span class="obs-tag"><i></i>OBS · STREAMLABS</span>
+      </span>
+    </div>
+    <main id="main"><slot /></main>
+    <footer class="site"><small>{ui.footerLegal}</small></footer>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var b = document.getElementById('menu-btn');
+      if (b) {
+        b.addEventListener('click', function () {
+          var o = document.body.classList.toggle('nav-open');
+          b.setAttribute('aria-expanded', String(o));
+        });
+        document.getElementById('main').addEventListener('click', function () {
+          document.body.classList.remove('nav-open');
+          b.setAttribute('aria-expanded', 'false');
+        });
+      }
+      var s = document.querySelector('.hero-shots');
+      if (s && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && window.matchMedia('(hover: hover)').matches) {
+        var raf = 0;
+        s.addEventListener('pointermove', function (e) {
+          var r = s.getBoundingClientRect();
+          var x = (e.clientX - r.left) / r.width - 0.5;
+          var y = (e.clientY - r.top) / r.height - 0.5;
+          cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(function () {
+            s.style.setProperty('--mx', x.toFixed(3));
+            s.style.setProperty('--my', y.toFixed(3));
+          });
+        });
+        s.addEventListener('pointerleave', function () {
+          s.style.setProperty('--mx', 0);
+          s.style.setProperty('--my', 0);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
