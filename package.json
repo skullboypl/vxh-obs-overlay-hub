@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.33.0",
   "description": "VXH – Visual eXtras Hub: overlaye i narzędzia dla streamerów (FACEIT Banner Studio, LoL Banner Studio).",
   "scripts": {
     "dev": "astro dev --host",
