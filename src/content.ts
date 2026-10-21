@@ -5,6 +5,10 @@ export const TOOL_URL = {
   faceit: 'https://faceitbanner.vxh.pl/',
   faceitDocs: 'https://faceitbanner.vxh.pl/docs/',
   lol: 'https://lolbanner.vxh.pl/',
+  livedelay: 'https://livedelay.vxh.pl/',
+  livedelayEn: 'https://livedelay.vxh.pl/en/',
+  livedelayRepo: 'https://github.com/skullboypl/livedelay-obs',
+  livedelayDownload: 'https://github.com/skullboypl/livedelay-obs/releases/latest',
 } as const;
 
 export const SMOOTHWIZARD = {
@@ -76,7 +80,7 @@ export const LOL_LAYOUT_META = [
 export type Faq = { q: string; a: string };
 export type Section = { h2: string; p?: string[]; ul?: string[]; ol?: string[] };
 export type Cta = { label: string; href: string };
-export type PageId = 'home' | 'faceit' | 'faceitLayouts' | 'lol' | 'lolLayouts' | 'obsGuide' | 'streamlabs' | 'browserSource' | 'faq' | 'about';
+export type PageId = 'home' | 'faceit' | 'faceitLayouts' | 'lol' | 'lolLayouts' | 'livedelay' | 'obsGuide' | 'streamlabs' | 'browserSource' | 'faq' | 'about';
 export type Kind = 'home' | 'article' | 'layouts' | 'faq' | 'about';
 
 export type Page = {
@@ -102,6 +106,7 @@ export const PATHS: Record<PageId, Record<Lang, string>> = {
   faceitLayouts: { pl: 'faceit/uklady/', en: 'faceit/layouts/' },
   lol: { pl: 'lol/', en: 'lol/' },
   lolLayouts: { pl: 'lol/uklady/', en: 'lol/layouts/' },
+  livedelay: { pl: 'livedelay/', en: 'livedelay/' },
   obsGuide: { pl: 'obs/jak-dodac-baner-do-obs/', en: 'obs/how-to-add-a-banner-to-obs/' },
   streamlabs: { pl: 'obs/streamlabs/', en: 'obs/streamlabs/' },
   browserSource: { pl: 'obs/browser-source-ustawienia/', en: 'obs/browser-source-settings/' },
@@ -115,7 +120,7 @@ export const UI = {
   pl: {
     htmlLang: 'pl',
     tagline: 'Narzędzia i overlaye, które podkręcają Twój stream.',
-    nav: { faceit: 'FACEIT Banner', lol: 'LoL Banner', obs: 'Poradniki OBS', faq: 'FAQ', about: 'O VXH' },
+    nav: { faceit: 'FACEIT Banner', lol: 'LoL Banner', livedelay: 'Live Delay', obs: 'Poradniki OBS', faq: 'FAQ', about: 'O VXH' },
     langSwitch: 'EN',
     langSwitchLabel: 'English version',
     skip: 'Przejdź do treści',
@@ -137,7 +142,7 @@ export const UI = {
   en: {
     htmlLang: 'en',
     tagline: 'Tools and overlays that level up your stream.',
-    nav: { faceit: 'FACEIT Banner', lol: 'LoL Banner', obs: 'OBS guides', faq: 'FAQ', about: 'About VXH' },
+    nav: { faceit: 'FACEIT Banner', lol: 'LoL Banner', livedelay: 'Live Delay', obs: 'OBS guides', faq: 'FAQ', about: 'About VXH' },
     langSwitch: 'PL',
     langSwitchLabel: 'Wersja polska',
     skip: 'Skip to content',
@@ -177,33 +182,33 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       id: 'home',
       kind: 'home',
       title: 'VXH – Visual eXtras Hub | Overlaye i banery do OBS dla streamerów',
-      description: 'VXH – Visual eXtras Hub: darmowe generatory banerów i overlayów do OBS i Streamlabs. Baner FACEIT z ELO i statystykami CS2 oraz baner rangi League of Legends.',
+      description: 'VXH – Visual eXtras Hub: darmowe generatory banerów i overlayów do OBS oraz LiveDelay — delay streamu bez reconnecta. Baner FACEIT, baner LoL i wtyczka delay.',
       h1: 'Visual eXtras Hub dla streamerów',
-      lead: 'Darmowe generatory banerów i overlayów do OBS Studio i Streamlabs. Wpisujesz nick, wybierasz wygląd, kopiujesz link i wklejasz go jako źródło Browser.',
+      lead: 'Darmowe generatory banerów i overlayów do OBS Studio i Streamlabs oraz LiveDelay — delay włączany na żywo bez zrywania streamu.',
       eyebrow: 'VXH · Visual eXtras Hub',
       image: '/img/hero-bg.png',
-      cta: [{ label: 'Baner FACEIT do OBS', href: '/faceit/' }, { label: 'Baner rangi LoL do OBS', href: '/lol/' }],
+      cta: [{ label: 'Baner FACEIT do OBS', href: '/faceit/' }, { label: 'Live Delay', href: '/livedelay/' }],
       sections: [
         {
           h2: 'Jak to działa',
           ol: [
-            'Wybierz narzędzie: baner FACEIT albo baner rangi LoL.',
-            'Wpisz nick (FACEIT) lub Riot ID (LoL) i dopasuj wygląd w podglądzie na żywo.',
-            'Skopiuj link i wklej go w OBS albo Streamlabs jako źródło Browser.',
+            'Wybierz narzędzie: baner FACEIT, baner rangi LoL albo LiveDelay.',
+            'Przy banerach wpisz nick i skopiuj link do źródła Browser. Przy LiveDelay pobierz wtyczkę i włącz delay w OBS.',
+            'Dopasuj wygląd do sceny — banery i overlay delayu działają od razu na streamie.',
           ],
         },
         {
           h2: 'Dlaczego VXH',
           ul: [
-            'Działa w przeglądarce, bez instalowania i bez wtyczek.',
-            'Dane pobierane na żywo, więc ELO, ranga i statystyki aktualizują się same.',
-            'Dziesiątki układów, kolory, czcionki i animacje do dopasowania do Twojej sceny.',
+            'Banery działają w przeglądarce, bez konta i bez wtyczek.',
+            'LiveDelay to natywna wtyczka OBS: Arm → Activate → Cut, bez reconnecta.',
+            'Dane banerów na żywo; ELO, ranga i statystyki aktualizują się same.',
             'Po polsku i po angielsku, z dokumentacją i poradnikami krok po kroku.',
           ],
         },
       ],
       faq: faqObs.pl,
-      related: ['obsGuide', 'streamlabs', 'browserSource'],
+      related: ['livedelay', 'obsGuide', 'streamlabs', 'browserSource'],
     },
     faceit: {
       id: 'faceit',
@@ -267,6 +272,52 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
         { name: 'Układy VERSUS', items: FACEIT_VERSUS, tool: 'faceit' },
       ],
       related: ['faceit', 'obsGuide'],
+    },
+    livedelay: {
+      id: 'livedelay',
+      kind: 'article',
+      title: 'LiveDelay do OBS: delay streamu bez reconnecta | VXH',
+      description: 'LiveDelay — darmowa wtyczka OBS: włączasz i wyłączasz opóźnienie streamu na żywo (Arm → Activate → Cut), bez zrywania połączenia. Multistream, overlay, hotkeye. Strona: livedelay.vxh.pl.',
+      h1: 'LiveDelay — delay bez reconnecta',
+      lead: 'Wtyczka do OBS Studio, która siedzi między tobą a platformą. Arm, Activate — widzowie są N sekund za tobą. Cut — wracasz na żywo. Stream nie zrywa się ani na chwilę.',
+      eyebrow: 'LiveDelay · OBS plugin',
+      cta: [
+        { label: 'Przejdź do livedelay.vxh.pl', href: TOOL_URL.livedelay },
+        { label: 'Pobierz wtyczkę', href: TOOL_URL.livedelayDownload },
+      ],
+      sections: [
+        {
+          h2: 'Co robi LiveDelay',
+          ul: [
+            'Delay włączany i wyłączany w trakcie transmisji — bez reconnecta.',
+            'Wiele platform naraz: Twitch, YouTube, Kick, Facebook lub własny RTMP/RTMPS.',
+            'Natywny dock Qt i skróty (Arm, Activate, Cut, Cut po emisji).',
+            'Overlay dla widzów (LIVE / ARMING / ARMED / DELAY) z motywami glass i opcją Armed = Live.',
+            'Lokalne API pod Stream Deck i skrypty (127.0.0.1:7799).',
+          ],
+        },
+        {
+          h2: 'Jak zacząć',
+          ol: [
+            'Otwórz livedelay.vxh.pl i pobierz zip z GitHuba.',
+            'Zamknij OBS, wypakuj do folderu OBS i potwierdź scalanie.',
+            'Narzędzia → LiveDelay → „Route OBS through LiveDelay”, potem Doki → LiveDelay.',
+          ],
+        },
+        {
+          h2: 'Oficjalna strona i kod',
+          p: [
+            'Pełna dokumentacja, demo docka i FAQ są na livedelay.vxh.pl. Kod źródłowy (GPL-2.0-or-later): github.com/skullboypl/livedelay-obs.',
+          ],
+        },
+      ],
+      faq: [
+        { q: 'Czym jest LiveDelay?', a: 'Wtyczką OBS Studio do włączania i wyłączania opóźnienia streamu w trakcie transmisji, bez zrywania połączenia z platformą.' },
+        { q: 'Czy to osobny program?', a: 'Nie. Proxy z buforem działa wewnątrz OBS jako część wtyczki.' },
+        { q: 'Gdzie jest oficjalna strona?', a: 'Na https://livedelay.vxh.pl/ (wersja EN: https://livedelay.vxh.pl/en/).' },
+        { q: 'Ile kosztuje?', a: 'Nic. Kod jest otwarty na GPL-2.0-or-later.' },
+      ],
+      related: ['obsGuide', 'browserSource', 'faq'],
     },
     lol: {
       id: 'lol',
@@ -433,18 +484,18 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       sections: [
         {
           h2: 'Czym jest VXH',
-          p: ['VXH zbiera narzędzia, które pomagają streamerom pokazać widzom więcej: statystyki, rangę, ELO i wygląd sceny. Na start są dwa generatory: FACEIT Banner Studio i LoL Banner Studio.'],
+          p: ['VXH zbiera narzędzia, które pomagają streamerom pokazać widzom więcej: statystyki, rangę, ELO, delay i wygląd sceny. Są generatory FACEIT i LoL oraz LiveDelay — wtyczka delay bez reconnecta.'],
         },
         {
           h2: 'Zasady',
-          ul: ['Darmowe i bez konta.', 'Bez wtyczek: wszystko działa jako źródło Browser.', 'Niezależny projekt społeczności, niepowiązany z FACEIT ani Riot Games.'],
+          ul: ['Darmowe (banery bez konta; LiveDelay na GPL).', 'Banery bez wtyczek (Browser Source); LiveDelay to opcjonalna wtyczka OBS.', 'Niezależny projekt społeczności, niepowiązany z FACEIT ani Riot Games.'],
         },
         {
           h2: 'Kod i kontakt',
-          p: ['FACEIT Banner Studio jest projektem open source na licencji MIT, rozwiniętym na bazie faceit-stats-widget autorstwa mxgic1337.'],
+          p: ['FACEIT Banner Studio jest projektem open source na licencji MIT. LiveDelay: GPL-2.0-or-later na github.com/skullboypl/livedelay-obs, strona livedelay.vxh.pl.'],
         },
       ],
-      related: ['faceit', 'lol'],
+      related: ['faceit', 'lol', 'livedelay'],
     },
   },
   en: {
@@ -452,33 +503,33 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       id: 'home',
       kind: 'home',
       title: 'VXH – Visual eXtras Hub | OBS banners and overlays for streamers',
-      description: 'VXH – Visual eXtras Hub: free banner and overlay generators for OBS and Streamlabs. FACEIT banner with ELO and CS2 stats and a League of Legends rank banner.',
+      description: 'VXH – Visual eXtras Hub: free OBS banner generators and LiveDelay — stream delay without reconnecting. FACEIT banner, LoL banner and delay plugin.',
       h1: 'Visual eXtras Hub for streamers',
-      lead: 'Free banner and overlay generators for OBS Studio and Streamlabs. Enter a name, pick a look, copy the link and paste it as a Browser source.',
+      lead: 'Free banner and overlay generators for OBS Studio and Streamlabs, plus LiveDelay — turn stream delay on and off live without dropping the connection.',
       eyebrow: 'VXH · Visual eXtras Hub',
       image: '/img/hero-bg.png',
-      cta: [{ label: 'FACEIT banner for OBS', href: '/en/faceit/' }, { label: 'LoL rank banner for OBS', href: '/en/lol/' }],
+      cta: [{ label: 'FACEIT banner for OBS', href: '/en/faceit/' }, { label: 'Live Delay', href: '/en/livedelay/' }],
       sections: [
         {
           h2: 'How it works',
           ol: [
-            'Pick a tool: the FACEIT banner or the LoL rank banner.',
-            'Enter your nickname (FACEIT) or Riot ID (LoL) and tweak the look in the live preview.',
-            'Copy the link and paste it into OBS or Streamlabs as a Browser source.',
+            'Pick a tool: the FACEIT banner, the LoL rank banner or LiveDelay.',
+            'For banners, enter a name and copy the Browser source link. For LiveDelay, download the plugin and arm the delay in OBS.',
+            'Match the look to your scene — banners and the delay overlay show up on stream right away.',
           ],
         },
         {
           h2: 'Why VXH',
           ul: [
-            'Runs in the browser with no install and no plugins.',
-            'Live data, so ELO, rank and stats update on their own.',
-            'Dozens of layouts, colours, fonts and animations to match your scene.',
+            'Banners run in the browser with no account and no plugins.',
+            'LiveDelay is a native OBS plugin: Arm → Activate → Cut, no reconnect.',
+            'Live banner data — ELO, rank and stats update on their own.',
             'Available in English and Polish, with step-by-step docs and guides.',
           ],
         },
       ],
       faq: faqObs.en,
-      related: ['obsGuide', 'streamlabs', 'browserSource'],
+      related: ['livedelay', 'obsGuide', 'streamlabs', 'browserSource'],
     },
     faceit: {
       id: 'faceit',
@@ -540,6 +591,52 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
         { name: 'VERSUS layouts', items: FACEIT_VERSUS, tool: 'faceit' },
       ],
       related: ['faceit', 'obsGuide'],
+    },
+    livedelay: {
+      id: 'livedelay',
+      kind: 'article',
+      title: 'LiveDelay for OBS: stream delay without reconnecting | VXH',
+      description: 'LiveDelay — free OBS plugin: turn stream delay on and off live (Arm → Activate → Cut) without dropping the connection. Multistream, overlay, hotkeys. Site: livedelay.vxh.pl.',
+      h1: 'LiveDelay — delay without reconnecting',
+      lead: 'An OBS Studio plugin that sits between you and the platform. Arm, Activate — viewers are N seconds behind. Cut — you are live again. The stream never drops.',
+      eyebrow: 'LiveDelay · OBS plugin',
+      cta: [
+        { label: 'Go to livedelay.vxh.pl', href: TOOL_URL.livedelayEn },
+        { label: 'Download the plugin', href: TOOL_URL.livedelayDownload },
+      ],
+      sections: [
+        {
+          h2: 'What LiveDelay does',
+          ul: [
+            'Turn delay on and off mid-broadcast — no reconnect.',
+            'Several platforms at once: Twitch, YouTube, Kick, Facebook or any RTMP/RTMPS server.',
+            'Native Qt dock and hotkeys (Arm, Activate, Cut, Cut after it airs).',
+            'Viewer overlay (LIVE / ARMING / ARMED / DELAY) with glass themes and optional Armed = Live.',
+            'Local API for Stream Deck and scripts (127.0.0.1:7799).',
+          ],
+        },
+        {
+          h2: 'How to start',
+          ol: [
+            'Open livedelay.vxh.pl and download the zip from GitHub.',
+            'Close OBS, unzip into your OBS folder and confirm merging.',
+            'Tools → LiveDelay → “Route OBS through LiveDelay”, then Docks → LiveDelay.',
+          ],
+        },
+        {
+          h2: 'Official site and source',
+          p: [
+            'Full docs, dock demo and FAQ live at livedelay.vxh.pl. Source code (GPL-2.0-or-later): github.com/skullboypl/livedelay-obs.',
+          ],
+        },
+      ],
+      faq: [
+        { q: 'What is LiveDelay?', a: 'An OBS Studio plugin that lets you turn stream delay on and off during a broadcast without dropping the connection to the platform.' },
+        { q: 'Is it a separate program?', a: 'No. The buffering proxy runs inside OBS as part of the plugin.' },
+        { q: 'Where is the official site?', a: 'At https://livedelay.vxh.pl/en/ (Polish: https://livedelay.vxh.pl/).' },
+        { q: 'How much does it cost?', a: 'Nothing. The code is open source under GPL-2.0-or-later.' },
+      ],
+      related: ['obsGuide', 'browserSource', 'faq'],
     },
     lol: {
       id: 'lol',
@@ -706,18 +803,18 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       sections: [
         {
           h2: 'What VXH is',
-          p: ['VXH collects tools that help streamers show viewers more: stats, rank, ELO and scene looks. There are two generators to start with: FACEIT Banner Studio and LoL Banner Studio.'],
+          p: ['VXH collects tools that help streamers show viewers more: stats, rank, ELO, delay and scene looks. There are FACEIT and LoL generators plus LiveDelay — a delay plugin without reconnecting.'],
         },
         {
           h2: 'Principles',
-          ul: ['Free and no account.', 'No plugins: everything runs as a Browser source.', 'An independent community project, not affiliated with FACEIT or Riot Games.'],
+          ul: ['Free (banners need no account; LiveDelay is GPL).', 'Banners need no plugins (Browser Source); LiveDelay is an optional OBS plugin.', 'An independent community project, not affiliated with FACEIT or Riot Games.'],
         },
         {
           h2: 'Code',
-          p: ['FACEIT Banner Studio is an open-source MIT project, built on faceit-stats-widget by mxgic1337.'],
+          p: ['FACEIT Banner Studio is open source under MIT. LiveDelay: GPL-2.0-or-later at github.com/skullboypl/livedelay-obs, site livedelay.vxh.pl.'],
         },
       ],
-      related: ['faceit', 'lol'],
+      related: ['faceit', 'lol', 'livedelay'],
     },
   },
 };

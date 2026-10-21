@@ -6,4 +6,10 @@ export default defineConfig({
   trailingSlash: 'always',
   build: { format: 'directory' },
   i18n: { defaultLocale: 'pl', locales: ['pl', 'en'], routing: { prefixDefaultLocale: false } },
+  redirects: {
+    '/go/livedelay/': 'https://livedelay.vxh.pl/',
+    '/en/go/livedelay/': 'https://livedelay.vxh.pl/en/',
+    '/delay/': 'https://livedelay.vxh.pl/',
+    '/en/delay/': 'https://livedelay.vxh.pl/en/',
+  },
 });

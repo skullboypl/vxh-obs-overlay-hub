@@ -45,6 +45,22 @@ if (page.app) {
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'PLN' },
   });
 }
+if (id === 'livedelay') {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'LiveDelay',
+    applicationCategory: 'MultimediaApplication',
+    applicationSubCategory: 'OBS Studio plugin',
+    operatingSystem: 'Windows 10, Windows 11',
+    url: lang === 'en' ? TOOL_URL.livedelayEn : TOOL_URL.livedelay,
+    downloadUrl: TOOL_URL.livedelayDownload,
+    codeRepository: TOOL_URL.livedelayRepo,
+    description: page.description,
+    inLanguage: ['pl', 'en', 'de', 'ru'],
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'PLN' },
+  });
+}
 if (page.faq?.length) {
   jsonLd.push({
     '@context': 'https://schema.org',
@@ -64,19 +80,28 @@ if (page.kind === 'article' && !page.app && steps.length) {
 }
 
 const tools = [
-  { id: 'faceit' as const, name: 'FACEIT Banner Studio', img: '/img/faceit-preview.webp', c: '#ff5900', hover: '#ff7424', tag: 'CS2' },
-  { id: 'lol' as const, name: 'LoL Banner Studio', img: '/img/lol-preview.webp', c: '#eb3d4d', hover: '#f25a68', tag: 'League of Legends' },
+  { id: 'faceit' as const, name: 'FACEIT Banner Studio', img: '/img/faceit-preview.webp', c: '#ff5900', hover: '#ff7424', tag: 'CS2', href: TOOL_URL.faceit, more: urlFor('faceit', lang) },
+  { id: 'lol' as const, name: 'LoL Banner Studio', img: '/img/lol-preview.webp', c: '#eb3d4d', hover: '#f25a68', tag: 'League of Legends', href: TOOL_URL.lol, more: urlFor('lol', lang) },
+  { id: 'livedelay' as const, name: 'LiveDelay', img: '/img/livedelay-preview.webp', c: '#ff3b2f', hover: '#ff5a4f', tag: 'OBS plugin', href: lang === 'en' ? TOOL_URL.livedelayEn : TOOL_URL.livedelay, more: urlFor('livedelay', lang) },
 ];
 const toolDesc = {
   faceit: { pl: 'ELO, level i statystyki CS2. 18 układów solo i 13 układów VERSUS.', en: 'ELO, level and CS2 stats. 18 solo and 13 VERSUS layouts.' },
   lol: { pl: 'Ranga Solo/Duo i Flex, LP i winrate z Riot ID. 8 układów.', en: 'Solo/Duo and Flex rank, LP and win rate from your Riot ID. 8 layouts.' },
+  livedelay: { pl: 'Delay streamu Arm → Activate → Cut, bez reconnecta. Overlay, multistream, hotkeye.', en: 'Stream delay Arm → Activate → Cut, no reconnect. Overlay, multistream, hotkeys.' },
+};
+const toolCta = {
+  faceit: ui.openTool,
+  lol: ui.openTool,
+  livedelay: lang === 'pl' ? 'Otwórz livedelay.vxh.pl' : 'Open livedelay.vxh.pl',
 };
 const heroH1 = id === 'home' ? (lang === 'pl' ? 'Banery na Twój stream' : 'Banners for your stream') : page.h1;
-const shot = page.app === 'faceit' ? '/img/faceit-generator.webp' : page.app === 'lol' ? '/img/lol-generator.webp' : undefined;
-const shotUrl = page.app === 'faceit' ? 'faceitbanner.vxh.pl' : 'lolbanner.vxh.pl';
+const shot = page.app === 'faceit' ? '/img/faceit-generator.webp' : page.app === 'lol' ? '/img/lol-generator.webp' : id === 'livedelay' ? '/img/livedelay-overlay.png' : undefined;
+const shotUrl = page.app === 'faceit' ? 'faceitbanner.vxh.pl' : page.app === 'lol' ? 'lolbanner.vxh.pl' : id === 'livedelay' ? 'livedelay.vxh.pl' : '';
 const shotAlt = page.app === 'faceit'
   ? (lang === 'pl' ? 'Generator FACEIT Banner Studio z podglądem na żywo' : 'FACEIT Banner Studio generator with live preview')
-  : (lang === 'pl' ? 'Generator LoL Banner Studio z podglądem na żywo' : 'LoL Banner Studio generator with live preview');
+  : page.app === 'lol'
+    ? (lang === 'pl' ? 'Generator LoL Banner Studio z podglądem na żywo' : 'LoL Banner Studio generator with live preview')
+    : (lang === 'pl' ? 'Edytor wyglądu overlayu LiveDelay' : 'LiveDelay overlay appearance editor');
 ---
 <Base lang={lang} id={id} title={page.title} description={page.description} crumb={page.h1} jsonLd={jsonLd}>
   <article>
@@ -112,8 +137,8 @@ const shotAlt = page.app === 'faceit'
                 <h3>{t.name}</h3>
                 <p>{toolDesc[t.id][lang]}</p>
                 <div class="btns">
-                  <a class="cta" style={`--btn:${t.c};--btn-h:${t.hover};--btn-text:#fff`} href={t.id === 'faceit' ? TOOL_URL.faceit : TOOL_URL.lol}>{ui.openTool}</a>
-                  <a class="cta alt" href={urlFor(t.id, lang)}>{lang === 'pl' ? 'Dowiedz się więcej' : 'Learn more'}</a>
+                  <a class="cta" style={`--btn:${t.c};--btn-h:${t.hover};--btn-text:#fff`} href={t.href} rel={t.id === 'livedelay' ? 'noopener' : undefined}>{toolCta[t.id]}</a>
+                  <a class="cta alt" href={t.more}>{lang === 'pl' ? 'Dowiedz się więcej' : 'Learn more'}</a>
                 </div>
               </div>
             </article>
