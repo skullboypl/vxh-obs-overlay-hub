@@ -182,9 +182,9 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       id: 'home',
       kind: 'home',
       title: 'VXH – Visual eXtras Hub | Overlaye i banery do OBS dla streamerów',
-      description: 'VXH – Visual eXtras Hub: darmowe generatory banerów i overlayów do OBS oraz LiveDelay — delay streamu bez reconnecta. Baner FACEIT, baner LoL i wtyczka delay.',
+      description: 'VXH – Visual eXtras Hub: darmowe generatory banerów i overlayów do OBS oraz LiveDelay - delay streamu bez reconnecta. Baner FACEIT, baner LoL i wtyczka delay.',
       h1: 'Visual eXtras Hub dla streamerów',
-      lead: 'Darmowe generatory banerów i overlayów do OBS Studio i Streamlabs oraz LiveDelay — delay włączany na żywo bez zrywania streamu.',
+      lead: 'Darmowe generatory banerów i overlayów do OBS Studio i Streamlabs oraz LiveDelay - delay włączany na żywo bez zrywania streamu.',
       eyebrow: 'VXH · Visual eXtras Hub',
       image: '/img/hero-bg.png',
       cta: [{ label: 'Baner FACEIT do OBS', href: '/faceit/' }, { label: 'Live Delay', href: '/livedelay/' }],
@@ -194,7 +194,7 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
           ol: [
             'Wybierz narzędzie: baner FACEIT, baner rangi LoL albo LiveDelay.',
             'Przy banerach wpisz nick i skopiuj link do źródła Browser. Przy LiveDelay pobierz wtyczkę i włącz delay w OBS.',
-            'Dopasuj wygląd do sceny — banery i overlay delayu działają od razu na streamie.',
+            'Dopasuj wygląd do sceny - banery i overlay delayu działają od razu na streamie.',
           ],
         },
         {
@@ -277,9 +277,9 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       id: 'livedelay',
       kind: 'article',
       title: 'LiveDelay do OBS: delay streamu bez reconnecta | VXH',
-      description: 'LiveDelay — darmowa wtyczka OBS: włączasz i wyłączasz opóźnienie streamu na żywo (Arm → Activate → Cut), bez zrywania połączenia. Multistream, overlay, hotkeye. Strona: livedelay.vxh.pl.',
-      h1: 'LiveDelay — delay bez reconnecta',
-      lead: 'Wtyczka do OBS Studio, która siedzi między tobą a platformą. Arm, Activate — widzowie są N sekund za tobą. Cut — wracasz na żywo. Stream nie zrywa się ani na chwilę.',
+      description: 'LiveDelay - darmowa wtyczka OBS: włączasz i wyłączasz opóźnienie streamu na żywo (Arm → Activate → Cut), bez zrywania połączenia. Multistream, overlay, hotkeye. Strona: livedelay.vxh.pl.',
+      h1: 'LiveDelay - delay bez reconnecta',
+      lead: 'Wtyczka do OBS Studio, która siedzi między tobą a platformą. Arm, Activate - widzowie są N sekund za tobą. Cut - wracasz na żywo. Stream nie zrywa się ani na chwilę.',
       eyebrow: 'LiveDelay · OBS plugin',
       cta: [
         { label: 'Przejdź do livedelay.vxh.pl', href: TOOL_URL.livedelay },
@@ -289,7 +289,7 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
         {
           h2: 'Co robi LiveDelay',
           ul: [
-            'Delay włączany i wyłączany w trakcie transmisji — bez reconnecta.',
+            'Delay włączany i wyłączany w trakcie transmisji - bez reconnecta.',
             'Wiele platform naraz: Twitch, YouTube, Kick, Facebook lub własny RTMP/RTMPS.',
             'Natywny dock Qt i skróty (Arm, Activate, Cut, Cut po emisji).',
             'Overlay dla widzów (LIVE / ARMING / ARMED / DELAY) z motywami glass i opcją Armed = Live.',
@@ -484,7 +484,7 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       sections: [
         {
           h2: 'Czym jest VXH',
-          p: ['VXH zbiera narzędzia, które pomagają streamerom pokazać widzom więcej: statystyki, rangę, ELO, delay i wygląd sceny. Są generatory FACEIT i LoL oraz LiveDelay — wtyczka delay bez reconnecta.'],
+          p: ['VXH zbiera narzędzia, które pomagają streamerom pokazać widzom więcej: statystyki, rangę, ELO, delay i wygląd sceny. Są generatory FACEIT i LoL oraz LiveDelay - wtyczka delay bez reconnecta.'],
         },
         {
           h2: 'Zasady',
@@ -503,9 +503,9 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       id: 'home',
       kind: 'home',
       title: 'VXH – Visual eXtras Hub | OBS banners and overlays for streamers',
-      description: 'VXH – Visual eXtras Hub: free OBS banner generators and LiveDelay — stream delay without reconnecting. FACEIT banner, LoL banner and delay plugin.',
+      description: 'VXH – Visual eXtras Hub: free OBS banner generators and LiveDelay - stream delay without reconnecting. FACEIT banner, LoL banner and delay plugin.',
       h1: 'Visual eXtras Hub for streamers',
-      lead: 'Free banner and overlay generators for OBS Studio and Streamlabs, plus LiveDelay — turn stream delay on and off live without dropping the connection.',
+      lead: 'Free banner and overlay generators for OBS Studio and Streamlabs, plus LiveDelay - turn stream delay on and off live without dropping the connection.',
       eyebrow: 'VXH · Visual eXtras Hub',
       image: '/img/hero-bg.png',
       cta: [{ label: 'FACEIT banner for OBS', href: '/en/faceit/' }, { label: 'Live Delay', href: '/en/livedelay/' }],
@@ -515,7 +515,7 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
           ol: [
             'Pick a tool: the FACEIT banner, the LoL rank banner or LiveDelay.',
             'For banners, enter a name and copy the Browser source link. For LiveDelay, download the plugin and arm the delay in OBS.',
-            'Match the look to your scene — banners and the delay overlay show up on stream right away.',
+            'Match the look to your scene - banners and the delay overlay show up on stream right away.',
           ],
         },
         {
@@ -523,7 +523,7 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
           ul: [
             'Banners run in the browser with no account and no plugins.',
             'LiveDelay is a native OBS plugin: Arm → Activate → Cut, no reconnect.',
-            'Live banner data — ELO, rank and stats update on their own.',
+            'Live banner data - ELO, rank and stats update on their own.',
             'Available in English and Polish, with step-by-step docs and guides.',
           ],
         },
@@ -596,9 +596,9 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       id: 'livedelay',
       kind: 'article',
       title: 'LiveDelay for OBS: stream delay without reconnecting | VXH',
-      description: 'LiveDelay — free OBS plugin: turn stream delay on and off live (Arm → Activate → Cut) without dropping the connection. Multistream, overlay, hotkeys. Site: livedelay.vxh.pl.',
-      h1: 'LiveDelay — delay without reconnecting',
-      lead: 'An OBS Studio plugin that sits between you and the platform. Arm, Activate — viewers are N seconds behind. Cut — you are live again. The stream never drops.',
+      description: 'LiveDelay - free OBS plugin: turn stream delay on and off live (Arm → Activate → Cut) without dropping the connection. Multistream, overlay, hotkeys. Site: livedelay.vxh.pl.',
+      h1: 'LiveDelay - delay without reconnecting',
+      lead: 'An OBS Studio plugin that sits between you and the platform. Arm, Activate - viewers are N seconds behind. Cut - you are live again. The stream never drops.',
       eyebrow: 'LiveDelay · OBS plugin',
       cta: [
         { label: 'Go to livedelay.vxh.pl', href: TOOL_URL.livedelayEn },
@@ -608,7 +608,7 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
         {
           h2: 'What LiveDelay does',
           ul: [
-            'Turn delay on and off mid-broadcast — no reconnect.',
+            'Turn delay on and off mid-broadcast - no reconnect.',
             'Several platforms at once: Twitch, YouTube, Kick, Facebook or any RTMP/RTMPS server.',
             'Native Qt dock and hotkeys (Arm, Activate, Cut, Cut after it airs).',
             'Viewer overlay (LIVE / ARMING / ARMED / DELAY) with glass themes and optional Armed = Live.',
@@ -803,7 +803,7 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       sections: [
         {
           h2: 'What VXH is',
-          p: ['VXH collects tools that help streamers show viewers more: stats, rank, ELO, delay and scene looks. There are FACEIT and LoL generators plus LiveDelay — a delay plugin without reconnecting.'],
+          p: ['VXH collects tools that help streamers show viewers more: stats, rank, ELO, delay and scene looks. There are FACEIT and LoL generators plus LiveDelay - a delay plugin without reconnecting.'],
         },
         {
           h2: 'Principles',

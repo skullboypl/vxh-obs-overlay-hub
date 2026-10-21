@@ -4,7 +4,7 @@
 
 # VXH – Visual eXtras Hub
 
-**Banery i overlaye do OBS dla streamerów.** Darmowe generatory banera FACEIT (ELO, level, statystyki CS2), banera rangi League of Legends oraz [LiveDelay](https://livedelay.vxh.pl/) — delay streamu bez reconnecta.
+**Banery i overlaye do OBS dla streamerów.** Darmowe generatory banera FACEIT (ELO, level, statystyki CS2), banera rangi League of Legends oraz [LiveDelay](https://livedelay.vxh.pl/) - delay streamu bez reconnecta.
 
 [![Live](https://img.shields.io/badge/live-vxh.pl-f5a524?style=for-the-badge)](https://vxh.pl/)
 [![FACEIT Banner](https://img.shields.io/badge/FACEIT-Banner%20Studio-ff5900?style=for-the-badge)](https://faceitbanner.vxh.pl/)
