@@ -4,7 +4,7 @@
 
 # VXH – Visual eXtras Hub
 
-**Banery i overlaye do OBS dla streamerów.** Darmowe generatory banera FACEIT (ELO, level, statystyki CS2), banera rangi League of Legends oraz [LiveDelay](https://livedelay.vxh.pl/) - delay streamu bez reconnecta.
+**Banery i overlaye do OBS dla streamerów.** Darmowe generatory banera FACEIT (ELO, level, statystyki CS2), banera rangi League of Legends oraz [LiveDelay](https://livedelay.vxh.pl/) - wtyczka OBS i aplikacja, delay i lokalny multistream bez reconnecta.
 
 [![Live](https://img.shields.io/badge/live-vxh.pl-f5a524?style=for-the-badge)](https://vxh.pl/)
 [![FACEIT Banner](https://img.shields.io/badge/FACEIT-Banner%20Studio-ff5900?style=for-the-badge)](https://faceitbanner.vxh.pl/)
@@ -26,7 +26,7 @@
 |---|---|---|
 | **FACEIT Banner Studio** | ELO, level, zmiana ELO i statystyki CS2 na streamie. 18 układów solo, 13 układów VERSUS | [faceitbanner.vxh.pl](https://faceitbanner.vxh.pl/) |
 | **LoL Banner Studio** | Ranga Solo/Duo i Flex, LP, winrate i profil z Riot ID. 8 układów | [lolbanner.vxh.pl](https://lolbanner.vxh.pl/) |
-| **LiveDelay** | Delay streamu w OBS bez reconnecta (Arm → Activate → Cut), multistream, overlay | [livedelay.vxh.pl](https://livedelay.vxh.pl/) · hub: [/livedelay/](https://vxh.pl/livedelay/) · redirect: [/go/livedelay/](https://vxh.pl/go/livedelay/) |
+| **LiveDelay** | Wtyczka OBS i aplikacja 0.1. Delay bez reconnecta (Arm → Activate → Cut), lokalny multistream, overlay | [livedelay.vxh.pl](https://livedelay.vxh.pl/) · aplikacja: [/opoznienie-bez-obs/](https://livedelay.vxh.pl/opoznienie-bez-obs/) · hub: [/livedelay/](https://vxh.pl/livedelay/) · redirect: [/go/livedelay/](https://vxh.pl/go/livedelay/) |
 
 ![Generator FACEIT Banner Studio](public/img/faceit-generator.webp)
 
@@ -84,7 +84,7 @@ Dodanie strony: wpis w `PAGES` i `PATHS` w `src/content.ts`. Sitemapa i `hreflan
 
 ## English
 
-**VXH (Visual eXtras Hub)** is the hub for free OBS overlay and banner generators plus **[LiveDelay](https://livedelay.vxh.pl/)** (stream delay without reconnecting). This repository is the static, bilingual (PL/EN) SEO site at [vxh.pl](https://vxh.pl/) built with Astro. Generators: [faceitbanner.vxh.pl](https://faceitbanner.vxh.pl/), [lolbanner.vxh.pl](https://lolbanner.vxh.pl/). LiveDelay site: [livedelay.vxh.pl](https://livedelay.vxh.pl/).
+**VXH (Visual eXtras Hub)** is the hub for free OBS overlay and banner generators plus **[LiveDelay](https://livedelay.vxh.pl/)** (an OBS plugin and a standalone app: stream delay and local multistream without reconnecting). This repository is the static, bilingual (PL/EN) SEO site at [vxh.pl](https://vxh.pl/) built with Astro. Generators: [faceitbanner.vxh.pl](https://faceitbanner.vxh.pl/), [lolbanner.vxh.pl](https://lolbanner.vxh.pl/). LiveDelay site: [livedelay.vxh.pl](https://livedelay.vxh.pl/).
 
 ## Zastrzeżenia
 

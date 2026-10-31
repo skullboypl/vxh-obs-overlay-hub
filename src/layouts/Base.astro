@@ -35,7 +35,9 @@ const nav: NavNode[] = [
   { key: 'livedelay', label: ui.nav.livedelay, dot: '#ff3b2f', items: [
     { id: 'livedelay', label: L.overview },
     { href: lang === 'en' ? TOOL_URL.livedelayEn : TOOL_URL.livedelay, label: lang === 'pl' ? 'Strona livedelay.vxh.pl' : 'Site livedelay.vxh.pl', ext: true },
-    { href: TOOL_URL.livedelayDownload, label: lang === 'pl' ? 'Pobierz wtyczkę' : 'Download plugin', ext: true },
+    { href: TOOL_URL.livedelayDownload, label: lang === 'pl' ? 'Pobierz wtyczkę OBS' : 'Download the OBS plugin', ext: true },
+    { href: lang === 'en' ? TOOL_URL.livedelayAppEn : TOOL_URL.livedelayApp, label: lang === 'pl' ? 'Aplikacja bez OBS' : 'App without OBS', ext: true },
+    { href: TOOL_URL.livedelayAppDownload, label: lang === 'pl' ? 'Pobierz aplikację' : 'Download the app', ext: true },
   ] },
   { key: 'obs', label: L.guides, items: [
     { id: 'obsGuide', label: 'OBS Studio' },
