@@ -73,6 +73,26 @@ if (id === 'livedelay') {
     softwareVersion: '0.1.0',
   });
 }
+if (id === 'intmouse') {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'INTmouse',
+    applicationCategory: 'UtilitiesApplication',
+    applicationSubCategory: 'Mouse and keyboard sharing',
+    operatingSystem: 'Windows 10, Windows 11',
+    description: page.description,
+    inLanguage: ['pl', 'en'],
+    url: TOOL_URL.intmouse,
+    downloadUrl: TOOL_URL.intmouseDownload,
+    codeRepository: TOOL_URL.intmouseRepo,
+    offers: [
+      { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'PLN' },
+      { '@type': 'Offer', name: 'Pro month', price: '9.99', priceCurrency: 'PLN' },
+      { '@type': 'Offer', name: 'Pro year', price: '89', priceCurrency: 'PLN' },
+    ],
+  });
+}
 if (page.faq?.length) {
   jsonLd.push({
     '@context': 'https://schema.org',
@@ -95,25 +115,30 @@ const tools = [
   { id: 'faceit' as const, name: 'FACEIT Banner Studio', img: '/img/faceit-preview.webp', c: '#ff5900', hover: '#ff7424', tag: 'CS2', href: TOOL_URL.faceit, more: urlFor('faceit', lang) },
   { id: 'lol' as const, name: 'LoL Banner Studio', img: '/img/lol-preview.webp', c: '#eb3d4d', hover: '#f25a68', tag: 'League of Legends', href: TOOL_URL.lol, more: urlFor('lol', lang) },
   { id: 'livedelay' as const, name: 'LiveDelay', img: '/img/livedelay-preview.webp', c: '#ff3b2f', hover: '#ff5a4f', tag: lang === 'pl' ? 'Wtyczka OBS + aplikacja' : 'OBS plugin + app', href: lang === 'en' ? TOOL_URL.livedelayEn : TOOL_URL.livedelay, more: urlFor('livedelay', lang) },
+  { id: 'intmouse' as const, name: 'INTmouse', img: '/img/intmouse-preview.webp', c: '#7dd3fc', hover: '#a5e4fd', tag: lang === 'pl' ? 'Multi-PC input' : 'Multi-PC input', href: TOOL_URL.intmouse, more: urlFor('intmouse', lang) },
 ];
 const toolDesc = {
   faceit: { pl: 'ELO, level i statystyki CS2. 18 układów solo i 13 układów VERSUS.', en: 'ELO, level and CS2 stats. 18 solo and 13 VERSUS layouts.' },
   lol: { pl: 'Ranga Solo/Duo i Flex, LP i winrate z Riot ID. 8 układów.', en: 'Solo/Duo and Flex rank, LP and win rate from your Riot ID. 8 layouts.' },
   livedelay: { pl: 'Wtyczka OBS i aplikacja. Delay Arm → Activate → Cut bez reconnecta i lokalny multistream.', en: 'OBS plugin and app. Delay Arm → Activate → Cut without reconnecting, and local multistream.' },
+  intmouse: { pl: 'Jedna mysz i klawiatura na kilku PC w LAN. Schowek, pliki, hasło.', en: 'One mouse and keyboard across PCs on your LAN. Clipboard, files, password.' },
 };
 const toolCta = {
   faceit: ui.openTool,
   lol: ui.openTool,
   livedelay: lang === 'pl' ? 'Otwórz livedelay.vxh.pl' : 'Open livedelay.vxh.pl',
+  intmouse: lang === 'pl' ? 'Otwórz intmouse.vxh.pl' : 'Open intmouse.vxh.pl',
 };
 const heroH1 = id === 'home' ? (lang === 'pl' ? 'Banery na Twój stream' : 'Banners for your stream') : page.h1;
-const shot = page.app === 'faceit' ? '/img/faceit-generator.webp' : page.app === 'lol' ? '/img/lol-generator.webp' : id === 'livedelay' ? '/img/livedelay-overlay.png' : undefined;
-const shotUrl = page.app === 'faceit' ? 'faceitbanner.vxh.pl' : page.app === 'lol' ? 'lolbanner.vxh.pl' : id === 'livedelay' ? 'livedelay.vxh.pl' : '';
+const shot = page.app === 'faceit' ? '/img/faceit-generator.webp' : page.app === 'lol' ? '/img/lol-generator.webp' : id === 'livedelay' ? '/img/livedelay-overlay.png' : id === 'intmouse' ? '/img/intmouse-ui.png' : undefined;
+const shotUrl = page.app === 'faceit' ? 'faceitbanner.vxh.pl' : page.app === 'lol' ? 'lolbanner.vxh.pl' : id === 'livedelay' ? 'livedelay.vxh.pl' : id === 'intmouse' ? 'intmouse.vxh.pl' : '';
 const shotAlt = page.app === 'faceit'
   ? (lang === 'pl' ? 'Generator FACEIT Banner Studio z podglądem na żywo' : 'FACEIT Banner Studio generator with live preview')
   : page.app === 'lol'
     ? (lang === 'pl' ? 'Generator LoL Banner Studio z podglądem na żywo' : 'LoL Banner Studio generator with live preview')
-    : (lang === 'pl' ? 'Edytor wyglądu overlayu LiveDelay' : 'LiveDelay overlay appearance editor');
+    : id === 'intmouse'
+      ? (lang === 'pl' ? 'INTmouse - wspólna mysz na kilku komputerach' : 'INTmouse - shared mouse across several PCs')
+      : (lang === 'pl' ? 'Edytor wyglądu overlayu LiveDelay' : 'LiveDelay overlay appearance editor');
 ---
 <Base lang={lang} id={id} title={page.title} description={page.description} crumb={page.h1} jsonLd={jsonLd}>
   <article>
@@ -149,7 +174,7 @@ const shotAlt = page.app === 'faceit'
                 <h3>{t.name}</h3>
                 <p>{toolDesc[t.id][lang]}</p>
                 <div class="btns">
-                  <a class="cta" style={`--btn:${t.c};--btn-h:${t.hover};--btn-text:#fff`} href={t.href} rel={t.id === 'livedelay' ? 'noopener' : undefined}>{toolCta[t.id]}</a>
+                  <a class="cta" style={`--btn:${t.c};--btn-h:${t.hover};--btn-text:${t.id === 'intmouse' ? '#0b0e13' : '#fff'}`} href={t.href} rel={t.id === 'livedelay' || t.id === 'intmouse' ? 'noopener' : undefined}>{toolCta[t.id]}</a>
                   <a class="cta alt" href={t.more}>{lang === 'pl' ? 'Dowiedz się więcej' : 'Learn more'}</a>
                 </div>
               </div>

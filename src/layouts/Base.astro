@@ -39,6 +39,12 @@ const nav: NavNode[] = [
     { href: lang === 'en' ? TOOL_URL.livedelayAppEn : TOOL_URL.livedelayApp, label: lang === 'pl' ? 'Aplikacja bez OBS' : 'App without OBS', ext: true },
     { href: TOOL_URL.livedelayAppDownload, label: lang === 'pl' ? 'Pobierz aplikację' : 'Download the app', ext: true },
   ] },
+  { key: 'intmouse', label: ui.nav.intmouse, dot: '#7dd3fc', items: [
+    { id: 'intmouse', label: L.overview },
+    { href: TOOL_URL.intmouse, label: lang === 'pl' ? 'Strona intmouse.vxh.pl' : 'Site intmouse.vxh.pl', ext: true },
+    { href: TOOL_URL.intmouseDownload, label: lang === 'pl' ? 'Pobierz INTmouse' : 'Download INTmouse', ext: true },
+    { href: TOOL_URL.intmouseRepo, label: 'GitHub', ext: true },
+  ] },
   { key: 'obs', label: L.guides, items: [
     { id: 'obsGuide', label: 'OBS Studio' },
     { id: 'streamlabs', label: 'Streamlabs' },

@@ -13,6 +13,9 @@ export const TOOL_URL = {
   livedelayAppRepo: 'https://github.com/skullboypl/livedelay-standalone-app',
   livedelayDownload: 'https://github.com/skullboypl/livedelay-obs/releases/latest',
   livedelayAppDownload: 'https://github.com/skullboypl/livedelay-standalone-app/releases/latest',
+  intmouse: 'https://intmouse.vxh.pl/',
+  intmouseRepo: 'https://github.com/skullboypl/intmouse',
+  intmouseDownload: 'https://github.com/skullboypl/intmouse/releases/latest',
 } as const;
 
 export const SMOOTHWIZARD = {
@@ -84,7 +87,7 @@ export const LOL_LAYOUT_META = [
 export type Faq = { q: string; a: string };
 export type Section = { h2: string; p?: string[]; ul?: string[]; ol?: string[] };
 export type Cta = { label: string; href: string };
-export type PageId = 'home' | 'faceit' | 'faceitLayouts' | 'lol' | 'lolLayouts' | 'livedelay' | 'obsGuide' | 'streamlabs' | 'browserSource' | 'faq' | 'about';
+export type PageId = 'home' | 'faceit' | 'faceitLayouts' | 'lol' | 'lolLayouts' | 'livedelay' | 'intmouse' | 'obsGuide' | 'streamlabs' | 'browserSource' | 'faq' | 'about';
 export type Kind = 'home' | 'article' | 'layouts' | 'faq' | 'about';
 
 export type Page = {
@@ -111,6 +114,7 @@ export const PATHS: Record<PageId, Record<Lang, string>> = {
   lol: { pl: 'lol/', en: 'lol/' },
   lolLayouts: { pl: 'lol/uklady/', en: 'lol/layouts/' },
   livedelay: { pl: 'livedelay/', en: 'livedelay/' },
+  intmouse: { pl: 'intmouse/', en: 'intmouse/' },
   obsGuide: { pl: 'obs/jak-dodac-baner-do-obs/', en: 'obs/how-to-add-a-banner-to-obs/' },
   streamlabs: { pl: 'obs/streamlabs/', en: 'obs/streamlabs/' },
   browserSource: { pl: 'obs/browser-source-ustawienia/', en: 'obs/browser-source-settings/' },
@@ -124,7 +128,7 @@ export const UI = {
   pl: {
     htmlLang: 'pl',
     tagline: 'Narzędzia i overlaye, które podkręcają Twój stream.',
-    nav: { faceit: 'FACEIT Banner', lol: 'LoL Banner', livedelay: 'Live Delay', obs: 'Poradniki OBS', faq: 'FAQ', about: 'O VXH' },
+    nav: { faceit: 'FACEIT Banner', lol: 'LoL Banner', livedelay: 'Live Delay', intmouse: 'INTmouse', obs: 'Poradniki OBS', faq: 'FAQ', about: 'O VXH' },
     langSwitch: 'EN',
     langSwitchLabel: 'English version',
     skip: 'Przejdź do treści',
@@ -146,7 +150,7 @@ export const UI = {
   en: {
     htmlLang: 'en',
     tagline: 'Tools and overlays that level up your stream.',
-    nav: { faceit: 'FACEIT Banner', lol: 'LoL Banner', livedelay: 'Live Delay', obs: 'OBS guides', faq: 'FAQ', about: 'About VXH' },
+    nav: { faceit: 'FACEIT Banner', lol: 'LoL Banner', livedelay: 'Live Delay', intmouse: 'INTmouse', obs: 'OBS guides', faq: 'FAQ', about: 'About VXH' },
     langSwitch: 'PL',
     langSwitchLabel: 'Wersja polska',
     skip: 'Skip to content',
@@ -186,33 +190,33 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       id: 'home',
       kind: 'home',
       title: 'VXH – Visual eXtras Hub | Overlaye i banery do OBS dla streamerów',
-      description: 'VXH – Visual eXtras Hub: darmowe banery FACEIT i LoL do OBS oraz LiveDelay - wtyczka OBS i aplikacja. Delay Arm → Activate → Cut bez reconnecta i lokalny multistream.',
+      description: 'VXH – Visual eXtras Hub: darmowe banery FACEIT i LoL do OBS, LiveDelay (delay bez reconnecta) oraz INTmouse - jedna mysz i klawiatura na kilku PC.',
       h1: 'Visual eXtras Hub dla streamerów',
-      lead: 'Darmowe generatory banerów i overlayów do OBS Studio i Streamlabs oraz LiveDelay - wtyczka do OBS i osobna aplikacja, ten sam delay włączany na żywo bez zrywania streamu.',
+      lead: 'Darmowe generatory banerów i overlayów do OBS Studio i Streamlabs, LiveDelay - delay włączany na żywo bez zrywania streamu, oraz INTmouse - wspólna mysz i klawiatura na kilku komputerach w LAN.',
       eyebrow: 'VXH · Visual eXtras Hub',
       image: '/img/hero-bg.png',
-      cta: [{ label: 'Baner FACEIT do OBS', href: '/faceit/' }, { label: 'Live Delay', href: '/livedelay/' }],
+      cta: [{ label: 'Baner FACEIT do OBS', href: '/faceit/' }, { label: 'INTmouse', href: '/intmouse/' }],
       sections: [
         {
           h2: 'Jak to działa',
           ol: [
-            'Wybierz narzędzie: baner FACEIT, baner rangi LoL albo LiveDelay.',
-            'Przy banerach wpisz nick i skopiuj link do źródła Browser. Przy LiveDelay weź wtyczkę do OBS albo aplikację obok Streamlabs, Meld Studio, XSplit lub vMix.',
-            'Dopasuj wygląd do sceny - banery i overlay delayu działają od razu na streamie.',
+            'Wybierz narzędzie: baner FACEIT, baner rangi LoL, LiveDelay albo INTmouse.',
+            'Przy banerach wpisz nick i skopiuj link do źródła Browser. Przy LiveDelay weź wtyczkę do OBS albo aplikację. Przy INTmouse pobierz program na oba PC.',
+            'Dopasuj wygląd do sceny albo układ monitorów - banery, delay i współdzielone wejście działają od razu.',
           ],
         },
         {
           h2: 'Dlaczego VXH',
           ul: [
             'Banery działają w przeglądarce, bez konta i bez wtyczek.',
-            'LiveDelay to wtyczka OBS i osobna aplikacja na tym samym silniku: Arm → Activate → Cut, bez reconnecta, plus lokalny multistream.',
-            'Dane banerów na żywo; ELO, ranga i statystyki aktualizują się same.',
+            'LiveDelay to wtyczka OBS i osobna aplikacja: Arm → Activate → Cut, bez reconnecta, plus lokalny multistream.',
+            'INTmouse łączy kilka PC w sieci: mysz, klawiatura, schowek i pliki lokalnie, bez chmury.',
             'Po polsku i po angielsku, z dokumentacją i poradnikami krok po kroku.',
           ],
         },
       ],
       faq: faqObs.pl,
-      related: ['livedelay', 'obsGuide', 'streamlabs', 'browserSource'],
+      related: ['intmouse', 'livedelay', 'obsGuide', 'browserSource'],
     },
     faceit: {
       id: 'faceit',
@@ -331,6 +335,59 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
         { q: 'Ile kosztuje?', a: 'Nic. Kod wtyczki i aplikacji jest otwarty na GPL-2.0-or-later.' },
       ],
       related: ['obsGuide', 'browserSource', 'faq'],
+    },
+    intmouse: {
+      id: 'intmouse',
+      kind: 'article',
+      title: 'INTmouse: jedna mysz i klawiatura na kilku komputerach | VXH',
+      description: 'INTmouse łączy kilka PC w LAN: wspólna mysz i klawiatura, schowek, pliki, hasło i klawisz awaryjny. Alternatywa dla ShareMouse. Windows, open source.',
+      h1: 'INTmouse - jedna mysz na kilku PC',
+      lead: 'Przesuwasz kursor za krawędź ekranu i jesteś już na następnym komputerze. Wejście idzie UDP, a schowek i pliki TCP - lokalnie w Twojej sieci, bez chmury.',
+      eyebrow: 'INTmouse · multi-PC input',
+      cta: [
+        { label: 'Strona intmouse.vxh.pl', href: TOOL_URL.intmouse },
+        { label: 'Pobierz INTmouse', href: TOOL_URL.intmouseDownload },
+        { label: 'Kod na GitHubie', href: TOOL_URL.intmouseRepo },
+      ],
+      sections: [
+        {
+          h2: 'Co robi INTmouse',
+          ul: [
+            'Wspólna mysz i klawiatura na kilku Windows PC w sieci lokalnej.',
+            'Układ monitorów, zapętlanie krawędzi, skok skrótem i blokady (fullscreen, narożniki, lista programów).',
+            'Schowek tekstowy, synchronizacja Caps/Num/Scroll Lock, wysyłanie plików.',
+            'Hasło (SHA-256), lista dozwolonych IP, klawisz awaryjny i ikona w trayu.',
+          ],
+        },
+        {
+          h2: 'Dla kogo',
+          p: [
+            'Setup z dwoma (lub więcej) komputerami: gaming + streaming, praca + drugi ekran, albo biurko bez przełączania KVM. Streamerzy często mają osobny PC do OBS - INTmouse pozwala sterować obu jedną myszą.',
+          ],
+        },
+        {
+          h2: 'Jak zacząć',
+          ol: [
+            'Pobierz wydanie z GitHuba albo wejdź na intmouse.vxh.pl.',
+            'Uruchom tę samą wersję na obu komputerach i otwórz w zaporze TCP 6555 oraz UDP 1046.',
+            'Ustaw to samo hasło, ułóż monitory w zakładce układu i włącz udostępnianie.',
+          ],
+        },
+        {
+          h2: 'Licencja i status',
+          p: [
+            'Kod jest open source. Wersja darmowa łączy dwa PC (po jednym monitorze). Okres próbny 7 dni i INTmouse Pro zdejmują limity. Beta: Windows; Linux i macOS w planach.',
+          ],
+        },
+      ],
+      faq: [
+        { q: 'Czym jest INTmouse?', a: 'Programem do współdzielenia myszy i klawiatury między komputerami w LAN. Alternatywa dla ShareMouse: lokalny ruch, bez konta do podstawowego użycia.' },
+        { q: 'Czy potrzebuję chmury?', a: 'Nie. Ruch myszy i klawiatury zostaje w Twojej sieci. Serwer używany jest tylko do licencji, okresu próbnego i aktualizacji.' },
+        { q: 'Na jakim systemie działa?', a: 'Dziś na Windows. Linux i macOS są w planach.' },
+        { q: 'Gdzie jest oficjalna strona?', a: 'Na https://intmouse.vxh.pl/. Wydania: https://github.com/skullboypl/intmouse/releases/latest.' },
+        { q: 'Ile kosztuje?', a: 'Darmowy plan na dwa PC (po jednym monitorze). Pro: miesiąc 9,99 zł albo rok 89 zł. 7 dni pełnej próby raz na komputer.' },
+      ],
+      related: ['livedelay', 'about', 'faq'],
     },
     lol: {
       id: 'lol',
@@ -497,18 +554,18 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       sections: [
         {
           h2: 'Czym jest VXH',
-          p: ['VXH zbiera narzędzia, które pomagają streamerom pokazać widzom więcej: statystyki, rangę, ELO, delay i wygląd sceny. Są generatory FACEIT i LoL oraz LiveDelay - wtyczka OBS i aplikacja, ten sam delay bez reconnecta.'],
+          p: ['VXH zbiera narzędzia, które pomagają streamerom pokazać widzom więcej: statystyki, rangę, ELO, delay, wspólne wejście i wygląd sceny. Są generatory FACEIT i LoL, LiveDelay oraz INTmouse.'],
         },
         {
           h2: 'Zasady',
-          ul: ['Darmowe (banery bez konta; LiveDelay na GPL).', 'Banery bez wtyczek (Browser Source). LiveDelay to wtyczka OBS albo osobna aplikacja.', 'Niezależny projekt społeczności, niepowiązany z FACEIT ani Riot Games.'],
+          ul: ['Banery darmowe bez konta; LiveDelay na GPL; INTmouse open source z planem darmowym i Pro.', 'Banery bez wtyczek (Browser Source). LiveDelay to wtyczka OBS albo aplikacja. INTmouse to osobny program na Windows.', 'Niezależny projekt społeczności, niepowiązany z FACEIT ani Riot Games.'],
         },
         {
           h2: 'Kod i kontakt',
-          p: ['FACEIT Banner Studio jest projektem open source na licencji MIT. LiveDelay (wtyczka i aplikacja) jest na GPL-2.0-or-later: github.com/skullboypl/livedelay-obs i github.com/skullboypl/livedelay-standalone-app, strona livedelay.vxh.pl.'],
+          p: ['FACEIT Banner Studio: MIT. LiveDelay: GPL-2.0-or-later (livedelay.vxh.pl). INTmouse: github.com/skullboypl/intmouse, strona intmouse.vxh.pl.'],
         },
       ],
-      related: ['faceit', 'lol', 'livedelay'],
+      related: ['faceit', 'lol', 'livedelay', 'intmouse'],
     },
   },
   en: {
@@ -516,33 +573,33 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       id: 'home',
       kind: 'home',
       title: 'VXH – Visual eXtras Hub | OBS banners and overlays for streamers',
-      description: 'VXH – Visual eXtras Hub: free FACEIT and LoL banners for OBS, plus LiveDelay - an OBS plugin and a standalone app. Arm → Activate → Cut delay without reconnecting, and local multistream.',
+      description: 'VXH – Visual eXtras Hub: free FACEIT and LoL banners for OBS, LiveDelay (delay without reconnecting), and INTmouse - one mouse and keyboard across several PCs.',
       h1: 'Visual eXtras Hub for streamers',
-      lead: 'Free banner and overlay generators for OBS Studio and Streamlabs, plus LiveDelay - an OBS plugin and a separate app, the same delay you turn on live without dropping the stream.',
+      lead: 'Free banner and overlay generators for OBS Studio and Streamlabs, LiveDelay - delay you turn on live without dropping the stream, and INTmouse - shared mouse and keyboard across PCs on your LAN.',
       eyebrow: 'VXH · Visual eXtras Hub',
       image: '/img/hero-bg.png',
-      cta: [{ label: 'FACEIT banner for OBS', href: '/en/faceit/' }, { label: 'Live Delay', href: '/en/livedelay/' }],
+      cta: [{ label: 'FACEIT banner for OBS', href: '/en/faceit/' }, { label: 'INTmouse', href: '/en/intmouse/' }],
       sections: [
         {
           h2: 'How it works',
           ol: [
-            'Pick a tool: the FACEIT banner, the LoL rank banner or LiveDelay.',
-            'For banners, enter a name and copy the Browser source link. For LiveDelay, take the OBS plugin or the app next to Streamlabs, Meld Studio, XSplit or vMix.',
-            'Match the look to your scene - banners and the delay overlay show up on stream right away.',
+            'Pick a tool: the FACEIT banner, the LoL rank banner, LiveDelay or INTmouse.',
+            'For banners, enter a name and copy the Browser source link. For LiveDelay, take the OBS plugin or the app. For INTmouse, install the program on both PCs.',
+            'Match the look to your scene or arrange the monitors - banners, delay and shared input show up right away.',
           ],
         },
         {
           h2: 'Why VXH',
           ul: [
             'Banners run in the browser with no account and no plugins.',
-            'LiveDelay is an OBS plugin and a separate app on the same engine: Arm → Activate → Cut, no reconnect, plus local multistream.',
-            'Live banner data - ELO, rank and stats update on their own.',
+            'LiveDelay is an OBS plugin and a separate app: Arm → Activate → Cut, no reconnect, plus local multistream.',
+            'INTmouse links several PCs on your LAN: mouse, keyboard, clipboard and files stay local, no cloud relay.',
             'Available in English and Polish, with step-by-step docs and guides.',
           ],
         },
       ],
       faq: faqObs.en,
-      related: ['livedelay', 'obsGuide', 'streamlabs', 'browserSource'],
+      related: ['intmouse', 'livedelay', 'obsGuide', 'browserSource'],
     },
     faceit: {
       id: 'faceit',
@@ -659,6 +716,59 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
         { q: 'How much does it cost?', a: 'Nothing. The plugin and the app are open source under GPL-2.0-or-later.' },
       ],
       related: ['obsGuide', 'browserSource', 'faq'],
+    },
+    intmouse: {
+      id: 'intmouse',
+      kind: 'article',
+      title: 'INTmouse: one mouse and keyboard across several PCs | VXH',
+      description: 'INTmouse shares mouse and keyboard across PCs on your LAN, plus clipboard, files, password auth and a panic key. A ShareMouse-style tool. Windows, open source.',
+      h1: 'INTmouse - one mouse across several PCs',
+      lead: 'Push the cursor past the screen edge and you are on the next computer. Input rides UDP; clipboard and files ride TCP - all on your LAN, no cloud.',
+      eyebrow: 'INTmouse · multi-PC input',
+      cta: [
+        { label: 'Site intmouse.vxh.pl', href: TOOL_URL.intmouse },
+        { label: 'Download INTmouse', href: TOOL_URL.intmouseDownload },
+        { label: 'Source on GitHub', href: TOOL_URL.intmouseRepo },
+      ],
+      sections: [
+        {
+          h2: 'What INTmouse does',
+          ul: [
+            'Shared mouse and keyboard across several Windows PCs on a local network.',
+            'Monitor layout, edge wrap, hotkey jump and switch locks (fullscreen, corners, process list).',
+            'Text clipboard, Caps/Num/Scroll Lock sync, and file transfer.',
+            'Password (SHA-256), allow-list IPs, panic key and a tray icon.',
+          ],
+        },
+        {
+          h2: 'Who it is for',
+          p: [
+            'Dual-PC desks: gaming + streaming, work + second box, or a setup without a hardware KVM. Streamers often keep OBS on a separate machine - INTmouse lets one mouse drive both.',
+          ],
+        },
+        {
+          h2: 'How to start',
+          ol: [
+            'Download a release from GitHub or open intmouse.vxh.pl.',
+            'Run the same version on both PCs and allow TCP 6555 and UDP 1046 in the firewall.',
+            'Set the same password, arrange monitors in the layout tab and turn sharing on.',
+          ],
+        },
+        {
+          h2: 'Licence and status',
+          p: [
+            'The code is open source. The free plan links two PCs (one monitor each). A 7-day trial and INTmouse Pro remove the limits. Beta: Windows; Linux and macOS are planned.',
+          ],
+        },
+      ],
+      faq: [
+        { q: 'What is INTmouse?', a: 'Software that shares mouse and keyboard between PCs on a LAN. A ShareMouse-style alternative: local traffic, no account required for basic use.' },
+        { q: 'Do I need the cloud?', a: 'No. Mouse and keyboard stay on your network. The server is only used for licensing, trial and updates.' },
+        { q: 'Which OS does it support?', a: 'Windows today. Linux and macOS are planned.' },
+        { q: 'Where is the official site?', a: 'At https://intmouse.vxh.pl/. Releases: https://github.com/skullboypl/intmouse/releases/latest.' },
+        { q: 'How much does it cost?', a: 'Free plan for two PCs (one monitor each). Pro: 9.99 PLN / month or 89 PLN / year. A 7-day full trial once per PC.' },
+      ],
+      related: ['livedelay', 'about', 'faq'],
     },
     lol: {
       id: 'lol',
@@ -825,18 +935,18 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       sections: [
         {
           h2: 'What VXH is',
-          p: ['VXH collects tools that help streamers show viewers more: stats, rank, ELO, delay and scene looks. There are FACEIT and LoL generators plus LiveDelay - an OBS plugin and an app, the same delay without reconnecting.'],
+          p: ['VXH collects tools that help streamers show viewers more: stats, rank, ELO, delay, shared input and scene looks. There are FACEIT and LoL generators, LiveDelay and INTmouse.'],
         },
         {
           h2: 'Principles',
-          ul: ['Free (banners need no account; LiveDelay is GPL).', 'Banners need no plugins (Browser Source). LiveDelay is an OBS plugin or a separate app.', 'An independent community project, not affiliated with FACEIT or Riot Games.'],
+          ul: ['Banners free with no account; LiveDelay is GPL; INTmouse is open source with a free plan and Pro.', 'Banners need no plugins (Browser Source). LiveDelay is an OBS plugin or an app. INTmouse is a separate Windows program.', 'An independent community project, not affiliated with FACEIT or Riot Games.'],
         },
         {
           h2: 'Code',
-          p: ['FACEIT Banner Studio is open source under MIT. LiveDelay (plugin and app) is GPL-2.0-or-later: github.com/skullboypl/livedelay-obs and github.com/skullboypl/livedelay-standalone-app, site livedelay.vxh.pl.'],
+          p: ['FACEIT Banner Studio: MIT. LiveDelay: GPL-2.0-or-later (livedelay.vxh.pl). INTmouse: github.com/skullboypl/intmouse, site intmouse.vxh.pl.'],
         },
       ],
-      related: ['faceit', 'lol', 'livedelay'],
+      related: ['faceit', 'lol', 'livedelay', 'intmouse'],
     },
   },
 };

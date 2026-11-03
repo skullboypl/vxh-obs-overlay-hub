@@ -1,11 +1,12 @@
 # VXH – Visual eXtras Hub
 
-> Darmowe generatory banerów i overlayów do OBS Studio i Streamlabs oraz LiveDelay — wtyczka OBS i aplikacja, delay i lokalny multistream bez reconnecta. / Free banner and overlay generators for OBS Studio and Streamlabs, plus LiveDelay — an OBS plugin and an app, delay and local multistream without reconnecting.
+> Darmowe generatory banerów i overlayów do OBS Studio i Streamlabs, LiveDelay — wtyczka OBS i aplikacja, delay i lokalny multistream bez reconnecta — oraz INTmouse — jedna mysz i klawiatura na kilku PC. / Free banner and overlay generators for OBS Studio and Streamlabs, LiveDelay — an OBS plugin and an app, delay and local multistream without reconnecting — and INTmouse — one mouse and keyboard across several PCs.
 
 ## Narzędzia / Tools
 - [FACEIT Banner Studio](https://vxh.pl/faceit/): baner FACEIT z ELO, levelem i statystykami CS2. 18 układów solo, 13 VERSUS. Generator: https://faceitbanner.vxh.pl/
 - [LoL Banner Studio](https://vxh.pl/lol/): baner rangi League of Legends (Solo/Duo, Flex, LP, winrate). 8 układów. Generator: https://lolbanner.vxh.pl/
 - [LiveDelay](https://vxh.pl/livedelay/): wtyczka OBS i osobna aplikacja 0.1 (Streamlabs, Meld Studio, XSplit, vMix). Ten sam silnik: delay Arm → Activate → Cut bez reconnecta i lokalny multistream. Strona: https://livedelay.vxh.pl/ · Aplikacja: https://livedelay.vxh.pl/opoznienie-bez-obs/ · Wtyczka: https://github.com/skullboypl/livedelay-obs/releases/latest · Aplikacja (zip): https://github.com/skullboypl/livedelay-standalone-app/releases/latest · Redirect: https://vxh.pl/go/livedelay/
+- [INTmouse](https://vxh.pl/intmouse/): wspólna mysz i klawiatura na kilku Windows PC w LAN (schowek, pliki, hasło, panic key). Strona: https://intmouse.vxh.pl/ · Wydania: https://github.com/skullboypl/intmouse/releases/latest · Redirect: https://vxh.pl/go/intmouse/
 
 ## Poradniki / Guides
 - [Jak dodać baner do OBS](https://vxh.pl/obs/jak-dodac-baner-do-obs/)
@@ -17,6 +18,7 @@
 - [FACEIT banner for OBS](https://vxh.pl/en/faceit/)
 - [LoL rank banner for OBS](https://vxh.pl/en/lol/)
 - [LiveDelay, OBS plugin and app](https://vxh.pl/en/livedelay/) → https://livedelay.vxh.pl/en/ · app: https://livedelay.vxh.pl/en/stream-delay-without-obs/
+- [INTmouse](https://vxh.pl/en/intmouse/) → https://intmouse.vxh.pl/
 - [How to add a banner to OBS](https://vxh.pl/en/obs/how-to-add-a-banner-to-obs/)
 
 Niezależny projekt społeczności, niepowiązany z FACEIT ani Riot Games. / Independent community project, not affiliated with FACEIT or Riot Games.

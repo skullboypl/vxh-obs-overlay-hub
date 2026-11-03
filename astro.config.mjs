@@ -11,5 +11,7 @@ export default defineConfig({
     '/en/go/livedelay/': 'https://livedelay.vxh.pl/en/',
     '/delay/': 'https://livedelay.vxh.pl/',
     '/en/delay/': 'https://livedelay.vxh.pl/en/',
+    '/go/intmouse/': 'https://intmouse.vxh.pl/',
+    '/en/go/intmouse/': 'https://intmouse.vxh.pl/',
   },
 });

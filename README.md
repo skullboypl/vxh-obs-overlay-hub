@@ -4,15 +4,16 @@
 
 # VXH – Visual eXtras Hub
 
-**Banery i overlaye do OBS dla streamerów.** Darmowe generatory banera FACEIT (ELO, level, statystyki CS2), banera rangi League of Legends oraz [LiveDelay](https://livedelay.vxh.pl/) - wtyczka OBS i aplikacja, delay i lokalny multistream bez reconnecta.
+**Banery i overlaye do OBS dla streamerów.** Darmowe generatory banera FACEIT (ELO, level, statystyki CS2), banera rangi League of Legends, [LiveDelay](https://livedelay.vxh.pl/) - wtyczka OBS i aplikacja, oraz [INTmouse](https://intmouse.vxh.pl/) - jedna mysz i klawiatura na kilku PC.
 
 [![Live](https://img.shields.io/badge/live-vxh.pl-f5a524?style=for-the-badge)](https://vxh.pl/)
 [![FACEIT Banner](https://img.shields.io/badge/FACEIT-Banner%20Studio-ff5900?style=for-the-badge)](https://faceitbanner.vxh.pl/)
 [![LoL Banner](https://img.shields.io/badge/LoL-Banner%20Studio-eb3d4d?style=for-the-badge)](https://lolbanner.vxh.pl/)
 [![LiveDelay](https://img.shields.io/badge/LiveDelay-livedelay.vxh.pl-ff3b2f?style=for-the-badge)](https://livedelay.vxh.pl/)
+[![INTmouse](https://img.shields.io/badge/INTmouse-intmouse.vxh.pl-7dd3fc?style=for-the-badge)](https://intmouse.vxh.pl/)
 [![Astro](https://img.shields.io/badge/Astro-5-111?style=for-the-badge&logo=astro)](https://astro.build/)
 
-[Strona](https://vxh.pl/) · [Baner FACEIT](https://vxh.pl/faceit/) · [Baner LoL](https://vxh.pl/lol/) · [Live Delay](https://vxh.pl/livedelay/) · [livedelay.vxh.pl](https://livedelay.vxh.pl/) · [English](https://vxh.pl/en/)
+[Strona](https://vxh.pl/) · [Baner FACEIT](https://vxh.pl/faceit/) · [Baner LoL](https://vxh.pl/lol/) · [Live Delay](https://vxh.pl/livedelay/) · [INTmouse](https://vxh.pl/intmouse/) · [intmouse.vxh.pl](https://intmouse.vxh.pl/) · [English](https://vxh.pl/en/)
 
 </div>
 
@@ -27,6 +28,7 @@
 | **FACEIT Banner Studio** | ELO, level, zmiana ELO i statystyki CS2 na streamie. 18 układów solo, 13 układów VERSUS | [faceitbanner.vxh.pl](https://faceitbanner.vxh.pl/) |
 | **LoL Banner Studio** | Ranga Solo/Duo i Flex, LP, winrate i profil z Riot ID. 8 układów | [lolbanner.vxh.pl](https://lolbanner.vxh.pl/) |
 | **LiveDelay** | Wtyczka OBS i aplikacja 0.1. Delay bez reconnecta (Arm → Activate → Cut), lokalny multistream, overlay | [livedelay.vxh.pl](https://livedelay.vxh.pl/) · aplikacja: [/opoznienie-bez-obs/](https://livedelay.vxh.pl/opoznienie-bez-obs/) · hub: [/livedelay/](https://vxh.pl/livedelay/) · redirect: [/go/livedelay/](https://vxh.pl/go/livedelay/) |
+| **INTmouse** | Jedna mysz i klawiatura na kilku Windows PC w LAN (schowek, pliki, hasło) | [intmouse.vxh.pl](https://intmouse.vxh.pl/) · hub: [/intmouse/](https://vxh.pl/intmouse/) · redirect: [/go/intmouse/](https://vxh.pl/go/intmouse/) |
 
 ![Generator FACEIT Banner Studio](public/img/faceit-generator.webp)
 
