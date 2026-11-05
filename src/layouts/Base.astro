@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import Socials from '../components/Socials.astro';
-import { SITE, UI, TOOL_URL, LINKS, PROMO, REPO, SMOOTHWIZARD, urlFor, type Lang, type PageId } from '../content';
+import { SITE, UI, TOOL_URL, LINKS, PROMO, REPO, SMOOTHWIZARD, SKULLMEDIA, urlFor, type Lang, type PageId } from '../content';
 interface Props { lang: Lang; id: PageId; title: string; description: string; crumb: string; jsonLd?: object[]; }
 const { lang, id, title, description, crumb, jsonLd = [] } = Astro.props;
 const ui = UI[lang];
@@ -129,6 +129,11 @@ const arrow = 'M7 17 17 7M8 7h9v9';
       <a class="nav-fps" href={SMOOTHWIZARD.url} target="_blank" rel="noopener">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" /></svg>
         <span>{SW.menu}</span>
+        <svg class="icon ext-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={arrow} /></svg>
+      </a>
+      <a class="nav-fps nav-services" href={SKULLMEDIA.url} target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 6-6 6 6 6M16 6l6 6-6 6M14 4l-4 16" /></svg>
+        <span>{SKULLMEDIA[lang].menu}</span>
         <svg class="icon ext-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={arrow} /></svg>
       </a>
     </nav>

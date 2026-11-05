@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Recommend from '../components/Recommend.astro';
+import Services from '../components/Services.astro';
 import { PAGES, PATHS, UI, SITE, TOOL_URL, LOL_LAYOUT_META, urlFor, type Lang, type PageId } from '../content';
 
 export function getStaticPaths() {
@@ -181,7 +182,7 @@ const toolCta = {
   chat: lang === 'pl' ? 'Otwórz czat' : 'Open the chat',
   fpsblindtest: lang === 'pl' ? 'Zacznij test' : 'Start the test',
 };
-const heroH1 = id === 'home' ? (lang === 'pl' ? 'Banery na Twój stream' : 'Banners for your stream') : page.h1;
+const heroH1 = id === 'home' ? (lang === 'pl' ? 'Darmowe dodatki na Twój stream' : 'Free add-ons for your stream') : page.h1;
 const shot = page.app === 'faceit' ? '/img/faceit-generator.webp' : page.app === 'lol' ? '/img/lol-generator.webp' : id === 'livedelay' ? '/img/livedelay-overlay.png' : id === 'intmouse' ? '/img/intmouse-ui.png' : id === 'overlays' ? '/img/overlays-studio.webp' : id === 'pliki' || id === 'chat' || id === 'fpsblindtest' ? `/img/${id}-site.webp` : undefined;
 const shotUrl = page.app === 'faceit' ? 'faceitbanner.vxh.pl' : page.app === 'lol' ? 'lolbanner.vxh.pl' : id === 'livedelay' ? 'livedelay.vxh.pl' : id === 'intmouse' ? 'intmouse.vxh.pl' : id === 'overlays' ? 'overlays.vxh.pl' : id === 'pliki' ? 'pliki.vxh.pl' : id === 'chat' ? 'chat.vxh.pl' : id === 'fpsblindtest' ? 'fpsblindtest.vxh.pl' : '';
 const shotAlt = page.app === 'faceit'
@@ -215,17 +216,7 @@ const shotAlt = page.app === 'faceit'
 
     {id === 'home' && (
       <>
-        <div class="hero-shots">
-          <figure class="shot f">
-            <img src="/img/faceit-preview.webp" alt={lang === 'pl' ? 'Baner FACEIT z ELO i statystykami CS2 w podglądzie generatora' : 'FACEIT banner with ELO and CS2 stats in the generator preview'} width="1000" height="490" fetchpriority="high" />
-            <figcaption>FACEIT</figcaption>
-          </figure>
-          <figure class="shot l">
-            <img src="/img/lol-preview.webp" alt={lang === 'pl' ? 'Baner rangi League of Legends w podglądzie generatora' : 'League of Legends rank banner in the generator preview'} width="1000" height="530" fetchpriority="high" />
-            <figcaption>League of Legends</figcaption>
-          </figure>
-        </div>
-        <div class="cards">
+        <div class="cards" id="narzedzia">
           {mainTools.map((t) => (
             <article class="card" style={`--c:${t.c}`}>
               <div class="img"><img src={t.img} alt="" width="1000" height="500" loading="lazy" /></div>
@@ -315,6 +306,8 @@ const shotAlt = page.app === 'faceit'
     )}
 
     {(id === 'obsGuide' || id === 'browserSource' || id === 'streamlabs') && <Recommend lang={lang} />}
+
+    {id === 'home' && <Services lang={lang} />}
 
     {page.faq && (
       <section class="panel faq faq-panel">

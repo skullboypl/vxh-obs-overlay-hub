@@ -1,0 +1,19 @@
+---
+import { SKULLMEDIA, type Lang } from '../content';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = SKULLMEDIA[lang];
+---
+<div class="recommend services-ad">
+  <span class="recommend-label">{t.label}</span>
+  <a class="recommend-card" href={SKULLMEDIA.url} target="_blank" rel="noopener">
+    <span class="services-ic" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6M14 4l-4 16" /></svg>
+    </span>
+    <span class="services-txt">
+      <strong>{t.title}</strong>
+      <small>{t.sub}</small>
+    </span>
+    <span class="services-cta">{t.cta}</span>
+  </a>
+</div>

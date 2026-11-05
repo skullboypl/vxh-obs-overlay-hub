@@ -41,6 +41,12 @@ export const SMOOTHWIZARD = {
   en: { label: 'Recommended:', sub: 'Gain FPS with one click', menu: 'Boost your FPS', group: 'Recommended' },
 } as const;
 
+export const SKULLMEDIA = {
+  url: 'https://uslugi.skullmedia.pl/',
+  pl: { label: 'Polecamy:', menu: 'Zamów projekt IT', title: 'Zamów swój projekt IT', sub: 'Strony WWW, aplikacje web i mobile, overlaye i narzędzia na zamówienie', cta: 'Wyceń projekt' },
+  en: { label: 'Recommended:', menu: 'Order an IT project', title: 'Order your IT project', sub: 'Websites, web and mobile apps, overlays and tools built to order', cta: 'Get a quote' },
+} as const;
+
 export const REPO = 'https://github.com/skullboypl/vxh-obs-overlay-hub';
 
 export const LINKS = {
@@ -212,10 +218,10 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       title: 'VXH – Visual eXtras Hub | Overlaye i banery do OBS dla streamerów',
       description: 'VXH – Visual eXtras Hub: darmowe banery FACEIT i LoL, animowane overlaye do OBS, LiveDelay (delay bez reconnecta), INTmouse - jedna mysz na kilku PC, oraz pliki przez WiFi, czat E2E i FPS Blind Test.',
       h1: 'Visual eXtras Hub dla streamerów',
-      lead: 'Darmowe generatory banerów i animowanych overlayów do OBS Studio i Streamlabs, LiveDelay - delay włączany na żywo bez zrywania streamu, oraz INTmouse - wspólna mysz i klawiatura na kilku komputerach w LAN.',
+      lead: 'Animowane overlaye do OBS (ekrany startu, przerwy i końca, ramki na kamerkę, efekty i paski), banery FACEIT i LoL z ELO i rangą, LiveDelay - delay bez zrywania streamu, INTmouse - jedna mysz na kilku PC, a do tego pliki przez WiFi, prywatny czat E2E i FPS Blind Test. Wszystko za darmo, w przeglądarce, bez konta.',
       eyebrow: 'VXH · Visual eXtras Hub',
       image: '/img/hero-bg.png',
-      cta: [{ label: 'Baner FACEIT do OBS', href: '/faceit/' }, { label: 'INTmouse', href: '/intmouse/' }],
+      cta: [{ label: 'Zobacz wszystkie narzędzia', href: '#narzedzia' }, { label: 'Overlaye do OBS', href: '/overlays/' }],
       sections: [
         {
           h2: 'Jak to działa',
@@ -798,10 +804,10 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       title: 'VXH – Visual eXtras Hub | OBS banners and overlays for streamers',
       description: 'VXH – Visual eXtras Hub: free FACEIT and LoL banners, animated OBS overlays, LiveDelay (delay without reconnecting), INTmouse - one mouse across several PCs, plus WiFi file transfer, E2E chat and FPS Blind Test.',
       h1: 'Visual eXtras Hub for streamers',
-      lead: 'Free banner and animated overlay generators for OBS Studio and Streamlabs, LiveDelay - delay you turn on live without dropping the stream, and INTmouse - shared mouse and keyboard across PCs on your LAN.',
+      lead: 'Animated OBS overlays (starting soon, BRB and ending screens, webcam frames, effects and tickers), FACEIT and LoL banners with ELO and rank, LiveDelay - delay without dropping the stream, INTmouse - one mouse across several PCs, plus WiFi file transfer, private E2E chat and FPS Blind Test. All free, in the browser, no account.',
       eyebrow: 'VXH · Visual eXtras Hub',
       image: '/img/hero-bg.png',
-      cta: [{ label: 'FACEIT banner for OBS', href: '/en/faceit/' }, { label: 'INTmouse', href: '/en/intmouse/' }],
+      cta: [{ label: 'See all tools', href: '#narzedzia' }, { label: 'OBS overlays', href: '/en/overlays/' }],
       sections: [
         {
           h2: 'How it works',
