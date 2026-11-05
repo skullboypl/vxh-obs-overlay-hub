@@ -6,7 +6,8 @@ export const TOOL_URL = {
   faceitDocs: 'https://faceitbanner.vxh.pl/docs/',
   lol: 'https://lolbanner.vxh.pl/',
   overlays: 'https://overlays.vxh.pl/',
-  overlaysGuide: 'https://overlays.vxh.pl/jak-dodac-overlay-do-obs',
+  overlaysGuide: 'https://overlays.vxh.pl/docs/obs',
+  overlaysGuideEn: 'https://overlays.vxh.pl/en/docs/obs',
   overlaysRepo: 'https://github.com/skullboypl/Overlays-VXH',
   livedelay:'https://livedelay.vxh.pl/',
   livedelayEn: 'https://livedelay.vxh.pl/en/',
@@ -318,7 +319,7 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
           h2: 'Ramki na kamerkę i paski',
           ul: [
             'Neonowa ramka z gradientem, narożniki HUD i ramka z podpisem na nick.',
-            'Ramki świąteczne: Boże Narodzenie, Zima, Sylwester, Walentynki, Wielkanoc, Halloween, 11 Listopada i Urodziny, każda w wersji animowanej, realistycznej i 3D.',
+            'Ramki świąteczne: Boże Narodzenie, Zima, Sylwester, Walentynki, Wielkanoc, Halloween, 11 Listopada i Urodziny, każda w 5 wersjach: animowanej, realistycznej, 3D, kreskówkowej i neonowej. Do tego Ramka Pro z wieloma opcjami i Kamerka + FACEIT z banerem z FACEIT Bannera.',
             'Przewijany pasek z komunikatami i rotator sociali (Twitch, Kick, YouTube, TikTok, Discord i inne).',
           ],
         },
@@ -737,7 +738,7 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       eyebrow: 'VXH Overlays · Browser Source',
       cta: [
         { label: 'Open the studio', href: TOOL_URL.overlays },
-        { label: 'OBS setup guide (PL)', href: TOOL_URL.overlaysGuide },
+        { label: 'OBS setup guide', href: TOOL_URL.overlaysGuideEn },
         { label: 'Source on GitHub', href: TOOL_URL.overlaysRepo },
       ],
       sections: [
@@ -760,7 +761,7 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
           h2: 'Webcam frames and widgets',
           ul: [
             'Neon gradient frame, HUD corners and a name tag frame.',
-            'Holiday frames: Christmas, Winter, New Year\'s Eve, Valentine\'s Day, Easter, Halloween, 11 November (Polish Independence Day) and Birthday, each in an animated, realistic and 3D version.',
+            'Holiday frames: Christmas, Winter, New Year\'s Eve, Valentine\'s Day, Easter, Halloween, 11 November (Polish Independence Day) and Birthday, each in 5 versions: animated, realistic, 3D, cartoon and neon. Plus Ramka Pro with lots of options and a webcam frame with a FACEIT Banner banner (ELO, stats).',
             'A scrolling ticker and a socials rotator (Twitch, Kick, YouTube, TikTok, Discord and more).',
           ],
         },
@@ -781,7 +782,7 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       ],
       faq: [
         { q: 'Is VXH Overlays free?', a: 'Yes. No account, no plugins and no watermark. The code is open source under MIT.' },
-        { q: 'Is the studio in English?', a: 'The studio interface is in Polish for now. The texts on the overlays are yours to type, so the overlay shows whatever language you use.' },
+        { q: 'Is the studio in English?', a: 'Yes. The studio and its docs come in 10 languages: English, Polish, German, Czech, Spanish, French, Portuguese, Russian, Turkish and Ukrainian. Pick one in the top right corner.' },
         { q: 'Where are my settings stored?', a: 'In the Browser Source link. Saved setups are kept in the browser\'s localStorage, so another browser or clearing site data means no saved setups. Use VXH1- codes to move them.' },
         { q: 'Does it work in Streamlabs?', a: 'Yes. It works in Streamlabs Desktop and in any app with a Browser Source.' },
         { q: 'Where is the official site?', a: 'At https://overlays.vxh.pl/. Code: https://github.com/skullboypl/Overlays-VXH.' },
