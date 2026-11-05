@@ -4,16 +4,17 @@
 
 # VXH – Visual eXtras Hub
 
-**Banery i overlaye do OBS dla streamerów.** Darmowe generatory banera FACEIT (ELO, level, statystyki CS2), banera rangi League of Legends, [LiveDelay](https://livedelay.vxh.pl/) - wtyczka OBS i aplikacja, oraz [INTmouse](https://intmouse.vxh.pl/) - jedna mysz i klawiatura na kilku PC.
+**Banery i overlaye do OBS dla streamerów.** Darmowe generatory banera FACEIT (ELO, level, statystyki CS2), [animowanych overlayów](https://overlays.vxh.pl/) (ekrany startu i przerwy, efekty, ramki na kamerkę), banera rangi League of Legends, [LiveDelay](https://livedelay.vxh.pl/) - wtyczka OBS i aplikacja, oraz [INTmouse](https://intmouse.vxh.pl/) - jedna mysz i klawiatura na kilku PC.
 
 [![Live](https://img.shields.io/badge/live-vxh.pl-f5a524?style=for-the-badge)](https://vxh.pl/)
 [![FACEIT Banner](https://img.shields.io/badge/FACEIT-Banner%20Studio-ff5900?style=for-the-badge)](https://faceitbanner.vxh.pl/)
+[![VXH Overlays](https://img.shields.io/badge/VXH-Overlays-a855f7?style=for-the-badge)](https://overlays.vxh.pl/)
 [![LoL Banner](https://img.shields.io/badge/LoL-Banner%20Studio-eb3d4d?style=for-the-badge)](https://lolbanner.vxh.pl/)
 [![LiveDelay](https://img.shields.io/badge/LiveDelay-livedelay.vxh.pl-ff3b2f?style=for-the-badge)](https://livedelay.vxh.pl/)
 [![INTmouse](https://img.shields.io/badge/INTmouse-intmouse.vxh.pl-7dd3fc?style=for-the-badge)](https://intmouse.vxh.pl/)
 [![Astro](https://img.shields.io/badge/Astro-5-111?style=for-the-badge&logo=astro)](https://astro.build/)
 
-[Strona](https://vxh.pl/) · [Baner FACEIT](https://vxh.pl/faceit/) · [Baner LoL](https://vxh.pl/lol/) · [Live Delay](https://vxh.pl/livedelay/) · [INTmouse](https://vxh.pl/intmouse/) · [intmouse.vxh.pl](https://intmouse.vxh.pl/) · [English](https://vxh.pl/en/)
+[Strona](https://vxh.pl/) · [Baner FACEIT](https://vxh.pl/faceit/) · [Overlaye](https://vxh.pl/overlays/) · [Baner LoL](https://vxh.pl/lol/) · [Live Delay](https://vxh.pl/livedelay/) · [INTmouse](https://vxh.pl/intmouse/) · [intmouse.vxh.pl](https://intmouse.vxh.pl/) · [English](https://vxh.pl/en/)
 
 </div>
 
@@ -26,6 +27,7 @@
 | Narzędzie | Do czego | Adres |
 |---|---|---|
 | **FACEIT Banner Studio** | ELO, level, zmiana ELO i statystyki CS2 na streamie. 18 układów solo, 13 układów VERSUS | [faceitbanner.vxh.pl](https://faceitbanner.vxh.pl/) |
+| **VXH Overlays** | Animowane overlaye Browser Source z konfiguratorem: Zaraz startujemy, BRB, Koniec streama, efekty, ramki na kamerkę, pasek i rotator sociali | [overlays.vxh.pl](https://overlays.vxh.pl/) · hub: [/overlays/](https://vxh.pl/overlays/) · redirect: [/go/overlays/](https://vxh.pl/go/overlays/) · kod: [Overlays-VXH](https://github.com/skullboypl/Overlays-VXH) |
 | **LoL Banner Studio** | Ranga Solo/Duo i Flex, LP, winrate i profil z Riot ID. 8 układów | [lolbanner.vxh.pl](https://lolbanner.vxh.pl/) |
 | **LiveDelay** | Wtyczka OBS i aplikacja 0.1. Delay bez reconnecta (Arm → Activate → Cut), lokalny multistream, overlay | [livedelay.vxh.pl](https://livedelay.vxh.pl/) · aplikacja: [/opoznienie-bez-obs/](https://livedelay.vxh.pl/opoznienie-bez-obs/) · hub: [/livedelay/](https://vxh.pl/livedelay/) · redirect: [/go/livedelay/](https://vxh.pl/go/livedelay/) |
 | **INTmouse** | Jedna mysz i klawiatura na kilku Windows PC w LAN (schowek, pliki, hasło) | [intmouse.vxh.pl](https://intmouse.vxh.pl/) · hub: [/intmouse/](https://vxh.pl/intmouse/) · redirect: [/go/intmouse/](https://vxh.pl/go/intmouse/) |
@@ -36,7 +38,7 @@
 
 ## Zawartość serwisu
 
-- Strony narzędzi: baner FACEIT do OBS i baner rangi LoL do OBS, z galeriami układów.
+- Strony narzędzi: baner FACEIT do OBS i baner rangi LoL do OBS z galeriami układów, VXH Overlays, LiveDelay i INTmouse.
 - Poradniki: dodawanie banera do OBS Studio i Streamlabs, ustawienia Browser Source (rozmiar, FPS, przezroczystość).
 - FAQ i strona o projekcie.
 - Dwie wersje językowe: polska (domyślna) i angielska pod `/en/`, z `hreflang`.
@@ -75,6 +77,7 @@ public/                        logo, obrazy, robots.txt, llms.txt
 assets-src/                    źródłowe zrzuty generatorów
 scripts/make-images.mjs        zrzuty -> public/img (WebP) i grafika OG
 scripts/make-logo.mjs          public/logo.svg -> PNG
+scripts/make-overlays-preview.mjs  zrzut studia Overlays -> public/img (karta i zrzut)
 deploy/nginx.conf, Dockerfile  wdrożenie
 ```
 

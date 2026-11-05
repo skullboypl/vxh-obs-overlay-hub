@@ -5,7 +5,10 @@ export const TOOL_URL = {
   faceit: 'https://faceitbanner.vxh.pl/',
   faceitDocs: 'https://faceitbanner.vxh.pl/docs/',
   lol: 'https://lolbanner.vxh.pl/',
-  livedelay: 'https://livedelay.vxh.pl/',
+  overlays: 'https://overlays.vxh.pl/',
+  overlaysGuide: 'https://overlays.vxh.pl/jak-dodac-overlay-do-obs',
+  overlaysRepo: 'https://github.com/skullboypl/Overlays-VXH',
+  livedelay:'https://livedelay.vxh.pl/',
   livedelayEn: 'https://livedelay.vxh.pl/en/',
   livedelayApp: 'https://livedelay.vxh.pl/opoznienie-bez-obs/',
   livedelayAppEn: 'https://livedelay.vxh.pl/en/stream-delay-without-obs/',
@@ -87,7 +90,7 @@ export const LOL_LAYOUT_META = [
 export type Faq = { q: string; a: string };
 export type Section = { h2: string; p?: string[]; ul?: string[]; ol?: string[] };
 export type Cta = { label: string; href: string };
-export type PageId = 'home' | 'faceit' | 'faceitLayouts' | 'lol' | 'lolLayouts' | 'livedelay' | 'intmouse' | 'obsGuide' | 'streamlabs' | 'browserSource' | 'faq' | 'about';
+export type PageId = 'home' | 'faceit' | 'faceitLayouts' | 'overlays' | 'lol' | 'lolLayouts' | 'livedelay' | 'intmouse' | 'obsGuide' | 'streamlabs' | 'browserSource' | 'faq' | 'about';
 export type Kind = 'home' | 'article' | 'layouts' | 'faq' | 'about';
 
 export type Page = {
@@ -111,6 +114,7 @@ export const PATHS: Record<PageId, Record<Lang, string>> = {
   home: { pl: '', en: '' },
   faceit: { pl: 'faceit/', en: 'faceit/' },
   faceitLayouts: { pl: 'faceit/uklady/', en: 'faceit/layouts/' },
+  overlays: { pl: 'overlays/', en: 'overlays/' },
   lol: { pl: 'lol/', en: 'lol/' },
   lolLayouts: { pl: 'lol/uklady/', en: 'lol/layouts/' },
   livedelay: { pl: 'livedelay/', en: 'livedelay/' },
@@ -128,7 +132,7 @@ export const UI = {
   pl: {
     htmlLang: 'pl',
     tagline: 'Narzędzia i overlaye, które podkręcają Twój stream.',
-    nav: { faceit: 'FACEIT Banner', lol: 'LoL Banner', livedelay: 'Live Delay', intmouse: 'INTmouse', obs: 'Poradniki OBS', faq: 'FAQ', about: 'O VXH' },
+    nav: { faceit: 'FACEIT Banner', overlays: 'Overlays', lol: 'LoL Banner', livedelay: 'Live Delay', intmouse: 'INTmouse', obs: 'Poradniki OBS', faq: 'FAQ', about: 'O VXH' },
     langSwitch: 'EN',
     langSwitchLabel: 'English version',
     skip: 'Przejdź do treści',
@@ -150,7 +154,7 @@ export const UI = {
   en: {
     htmlLang: 'en',
     tagline: 'Tools and overlays that level up your stream.',
-    nav: { faceit: 'FACEIT Banner', lol: 'LoL Banner', livedelay: 'Live Delay', intmouse: 'INTmouse', obs: 'OBS guides', faq: 'FAQ', about: 'About VXH' },
+    nav: { faceit: 'FACEIT Banner', overlays: 'Overlays', lol: 'LoL Banner', livedelay: 'Live Delay', intmouse: 'INTmouse', obs: 'OBS guides', faq: 'FAQ', about: 'About VXH' },
     langSwitch: 'PL',
     langSwitchLabel: 'Wersja polska',
     skip: 'Skip to content',
@@ -190,9 +194,9 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       id: 'home',
       kind: 'home',
       title: 'VXH – Visual eXtras Hub | Overlaye i banery do OBS dla streamerów',
-      description: 'VXH – Visual eXtras Hub: darmowe banery FACEIT i LoL do OBS, LiveDelay (delay bez reconnecta) oraz INTmouse - jedna mysz i klawiatura na kilku PC.',
+      description: 'VXH – Visual eXtras Hub: darmowe banery FACEIT i LoL, animowane overlaye do OBS, LiveDelay (delay bez reconnecta) i INTmouse - jedna mysz i klawiatura na kilku PC.',
       h1: 'Visual eXtras Hub dla streamerów',
-      lead: 'Darmowe generatory banerów i overlayów do OBS Studio i Streamlabs, LiveDelay - delay włączany na żywo bez zrywania streamu, oraz INTmouse - wspólna mysz i klawiatura na kilku komputerach w LAN.',
+      lead: 'Darmowe generatory banerów i animowanych overlayów do OBS Studio i Streamlabs, LiveDelay - delay włączany na żywo bez zrywania streamu, oraz INTmouse - wspólna mysz i klawiatura na kilku komputerach w LAN.',
       eyebrow: 'VXH · Visual eXtras Hub',
       image: '/img/hero-bg.png',
       cta: [{ label: 'Baner FACEIT do OBS', href: '/faceit/' }, { label: 'INTmouse', href: '/intmouse/' }],
@@ -200,15 +204,15 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
         {
           h2: 'Jak to działa',
           ol: [
-            'Wybierz narzędzie: baner FACEIT, baner rangi LoL, LiveDelay albo INTmouse.',
-            'Przy banerach wpisz nick i skopiuj link do źródła Browser. Przy LiveDelay weź wtyczkę do OBS albo aplikację. Przy INTmouse pobierz program na oba PC.',
+            'Wybierz narzędzie: baner FACEIT, overlaye, baner rangi LoL, LiveDelay albo INTmouse.',
+            'Przy banerach wpisz nick i skopiuj link do źródła Browser, przy overlayach ustaw wygląd na podglądzie i skopiuj link. Przy LiveDelay weź wtyczkę do OBS albo aplikację. Przy INTmouse pobierz program na oba PC.',
             'Dopasuj wygląd do sceny albo układ monitorów - banery, delay i współdzielone wejście działają od razu.',
           ],
         },
         {
           h2: 'Dlaczego VXH',
           ul: [
-            'Banery działają w przeglądarce, bez konta i bez wtyczek.',
+            'Banery i overlaye działają w przeglądarce, bez konta i bez wtyczek.',
             'LiveDelay to wtyczka OBS i osobna aplikacja: Arm → Activate → Cut, bez reconnecta, plus lokalny multistream.',
             'INTmouse łączy kilka PC w sieci: mysz, klawiatura, schowek i pliki lokalnie, bez chmury.',
             'Po polsku i po angielsku, z dokumentacją i poradnikami krok po kroku.',
@@ -280,6 +284,67 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
         { name: 'Układy VERSUS', items: FACEIT_VERSUS, tool: 'faceit' },
       ],
       related: ['faceit', 'obsGuide'],
+    },
+    overlays: {
+      id: 'overlays',
+      kind: 'article',
+      title: 'VXH Overlays: darmowe animowane overlaye do OBS i Streamlabs',
+      description: 'Darmowe animowane overlaye do OBS i Streamlabs: ekrany Zaraz startujemy, BRB i Koniec streama, efekty, ramki na kamerkę i paski. Konfigurator na żywo, bez konta i znaku wodnego.',
+      h1: 'VXH Overlays - animowane overlaye do OBS',
+      lead: 'Studio w przeglądarce z podglądem na żywo. Ustawiasz overlay, kopiujesz jeden link i wklejasz go w OBS albo Streamlabs jako źródło Browser Source. Wszystkie ustawienia siedzą w linku, bez konta i bez znaku wodnego.',
+      eyebrow: 'VXH Overlays · Browser Source',
+      cta: [
+        { label: 'Otwórz studio', href: TOOL_URL.overlays },
+        { label: 'Jak dodać do OBS', href: TOOL_URL.overlaysGuide },
+        { label: 'Kod na GitHubie', href: TOOL_URL.overlaysRepo },
+      ],
+      sections: [
+        {
+          h2: 'Ekrany startu, przerwy i końca',
+          ul: [
+            'Zaraz startujemy, Przerwa / BRB i Koniec streama jako scena 1920×1080.',
+            'Licznik w minutach od załadowania źródła albo do podanej godziny, z paskiem postępu.',
+            'Miejsce na czat, sociale z ikonami i animacja tytułu (wjazd, fala, pop, neon, glitch).',
+            '19 teł: 9 animowanych w CSS i 10 obrazków wygenerowanych przez AI, albo własny obrazek z linku.',
+          ],
+        },
+        {
+          h2: 'Efekty na cały ekran',
+          p: [
+            'Śnieg, deszcz, konfetti, unoszące się emoji, świetliki, płatki i liście, fajerwerki, gwiazdy i warp oraz ziarno filmowe z winietą. Efekt może zajmować cały ekran, jedną połowę albo same boki.',
+          ],
+        },
+        {
+          h2: 'Ramki na kamerkę i paski',
+          ul: [
+            'Neonowa ramka z gradientem, narożniki HUD i ramka z podpisem na nick.',
+            'Ramki świąteczne: Boże Narodzenie, Zima, Sylwester, Walentynki, Wielkanoc, Halloween, 11 Listopada i Urodziny, każda w wersji animowanej, realistycznej i 3D.',
+            'Przewijany pasek z komunikatami i rotator sociali (Twitch, Kick, YouTube, TikTok, Discord i inne).',
+          ],
+        },
+        {
+          h2: 'Jak dodać overlay do OBS',
+          ol: [
+            'Otwórz overlays.vxh.pl, wybierz overlay i ustaw go na podglądzie.',
+            'Kliknij Kopiuj przy linku do Browser Source.',
+            'W OBS dodaj źródło Przeglądarka (Browser Source), wklej link i ustaw rozmiar podany pod podglądem, np. 1920×1080 dla ekranów i efektów albo 640×360 dla ramek.',
+          ],
+        },
+        {
+          h2: 'Zapisane ustawienia i kody VXH1-',
+          p: [
+            'Zapisane zestawy są tylko w localStorage tej przeglądarki, nic nie trafia na serwer. Żeby przenieść je na inny komputer, skopiuj kod udostępniania VXH1- i wklej go w zakładce Udostępnij / import. Kod studia jest open source na licencji MIT.',
+          ],
+        },
+      ],
+      faq: [
+        { q: 'Czy VXH Overlays jest darmowy?', a: 'Tak. Bez konta, bez wtyczek i bez znaku wodnego. Kod jest open source na licencji MIT.' },
+        { q: 'Gdzie są moje ustawienia?', a: 'W linku do Browser Source. Zapisane zestawy studio trzyma w localStorage przeglądarki, więc inna przeglądarka albo wyczyszczenie danych strony oznacza brak zapisów. Do przenoszenia służą kody VXH1-.' },
+        { q: 'Czy działa w Streamlabs?', a: 'Tak. Działa w Streamlabs Desktop i w każdym programie ze źródłem Browser Source.' },
+        { q: 'Jak zmienić overlay, który już jest w OBS?', a: 'Otwórz link do edycji, zmień ustawienia, skopiuj nowy link do Browser Source i podmień go we właściwościach źródła.' },
+        { q: 'Gdzie jest oficjalna strona?', a: 'Na https://overlays.vxh.pl/. Kod: https://github.com/skullboypl/Overlays-VXH.' },
+      ],
+      related: ['faceit', 'obsGuide', 'browserSource'],
     },
     livedelay: {
       id: 'livedelay',
@@ -554,18 +619,18 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       sections: [
         {
           h2: 'Czym jest VXH',
-          p: ['VXH zbiera narzędzia, które pomagają streamerom pokazać widzom więcej: statystyki, rangę, ELO, delay, wspólne wejście i wygląd sceny. Są generatory FACEIT i LoL, LiveDelay oraz INTmouse.'],
+          p: ['VXH zbiera narzędzia, które pomagają streamerom pokazać widzom więcej: statystyki, rangę, ELO, delay, wspólne wejście i wygląd sceny. Są generatory FACEIT i LoL, VXH Overlays, LiveDelay oraz INTmouse.'],
         },
         {
           h2: 'Zasady',
-          ul: ['Banery darmowe bez konta; LiveDelay na GPL; INTmouse open source z planem darmowym i Pro.', 'Banery bez wtyczek (Browser Source). LiveDelay to wtyczka OBS albo aplikacja. INTmouse to osobny program na Windows.', 'Niezależny projekt społeczności, niepowiązany z FACEIT ani Riot Games.'],
+          ul: ['Banery i overlaye darmowe bez konta; LiveDelay na GPL; INTmouse open source z planem darmowym i Pro.', 'Banery i overlaye bez wtyczek (Browser Source). LiveDelay to wtyczka OBS albo aplikacja. INTmouse to osobny program na Windows.', 'Niezależny projekt społeczności, niepowiązany z FACEIT ani Riot Games.'],
         },
         {
           h2: 'Kod i kontakt',
-          p: ['FACEIT Banner Studio: MIT. LiveDelay: GPL-2.0-or-later (livedelay.vxh.pl). INTmouse: github.com/skullboypl/intmouse, strona intmouse.vxh.pl.'],
+          p: ['FACEIT Banner Studio: MIT. VXH Overlays: MIT (github.com/skullboypl/Overlays-VXH). LiveDelay: GPL-2.0-or-later (livedelay.vxh.pl). INTmouse: github.com/skullboypl/intmouse, strona intmouse.vxh.pl.'],
         },
       ],
-      related: ['faceit', 'lol', 'livedelay', 'intmouse'],
+      related: ['faceit', 'overlays', 'lol', 'livedelay', 'intmouse'],
     },
   },
   en: {
@@ -573,9 +638,9 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       id: 'home',
       kind: 'home',
       title: 'VXH – Visual eXtras Hub | OBS banners and overlays for streamers',
-      description: 'VXH – Visual eXtras Hub: free FACEIT and LoL banners for OBS, LiveDelay (delay without reconnecting), and INTmouse - one mouse and keyboard across several PCs.',
+      description: 'VXH – Visual eXtras Hub: free FACEIT and LoL banners, animated OBS overlays, LiveDelay (delay without reconnecting) and INTmouse - one mouse and keyboard across several PCs.',
       h1: 'Visual eXtras Hub for streamers',
-      lead: 'Free banner and overlay generators for OBS Studio and Streamlabs, LiveDelay - delay you turn on live without dropping the stream, and INTmouse - shared mouse and keyboard across PCs on your LAN.',
+      lead: 'Free banner and animated overlay generators for OBS Studio and Streamlabs, LiveDelay - delay you turn on live without dropping the stream, and INTmouse - shared mouse and keyboard across PCs on your LAN.',
       eyebrow: 'VXH · Visual eXtras Hub',
       image: '/img/hero-bg.png',
       cta: [{ label: 'FACEIT banner for OBS', href: '/en/faceit/' }, { label: 'INTmouse', href: '/en/intmouse/' }],
@@ -583,15 +648,15 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
         {
           h2: 'How it works',
           ol: [
-            'Pick a tool: the FACEIT banner, the LoL rank banner, LiveDelay or INTmouse.',
-            'For banners, enter a name and copy the Browser source link. For LiveDelay, take the OBS plugin or the app. For INTmouse, install the program on both PCs.',
+            'Pick a tool: the FACEIT banner, overlays, the LoL rank banner, LiveDelay or INTmouse.',
+            'For banners, enter a name and copy the Browser source link; for overlays, set the look in the preview and copy the link. For LiveDelay, take the OBS plugin or the app. For INTmouse, install the program on both PCs.',
             'Match the look to your scene or arrange the monitors - banners, delay and shared input show up right away.',
           ],
         },
         {
           h2: 'Why VXH',
           ul: [
-            'Banners run in the browser with no account and no plugins.',
+            'Banners and overlays run in the browser with no account and no plugins.',
             'LiveDelay is an OBS plugin and a separate app: Arm → Activate → Cut, no reconnect, plus local multistream.',
             'INTmouse links several PCs on your LAN: mouse, keyboard, clipboard and files stay local, no cloud relay.',
             'Available in English and Polish, with step-by-step docs and guides.',
@@ -661,6 +726,67 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
         { name: 'VERSUS layouts', items: FACEIT_VERSUS, tool: 'faceit' },
       ],
       related: ['faceit', 'obsGuide'],
+    },
+    overlays: {
+      id: 'overlays',
+      kind: 'article',
+      title: 'VXH Overlays: free animated overlays for OBS and Streamlabs',
+      description: 'Free animated overlays for OBS and Streamlabs: starting soon, BRB and ending screens, full-screen effects, webcam frames and tickers. Live configurator, no account, no watermark.',
+      h1: 'VXH Overlays - animated overlays for OBS',
+      lead: 'A browser studio with a live preview. Set up an overlay, copy one link and paste it into OBS or Streamlabs as a Browser Source. Every setting lives in the link, with no account and no watermark.',
+      eyebrow: 'VXH Overlays · Browser Source',
+      cta: [
+        { label: 'Open the studio', href: TOOL_URL.overlays },
+        { label: 'OBS setup guide (PL)', href: TOOL_URL.overlaysGuide },
+        { label: 'Source on GitHub', href: TOOL_URL.overlaysRepo },
+      ],
+      sections: [
+        {
+          h2: 'Starting soon, break and ending screens',
+          ul: [
+            'Starting soon, Break / BRB and Stream ending as a 1920×1080 scene.',
+            'Countdown in minutes from when the source loads, or until a set time, with a progress bar.',
+            'A chat slot, socials with icons and title animations (slide in, wave, pop, neon, glitch).',
+            '19 backgrounds: 9 animated in CSS and 10 AI-generated images, or your own image from a link.',
+          ],
+        },
+        {
+          h2: 'Full-screen effects',
+          p: [
+            'Snow, rain, confetti, floating emoji, fireflies, petals and leaves, fireworks, stars and warp, and film grain with a vignette. An effect can cover the whole screen, one half or just the sides.',
+          ],
+        },
+        {
+          h2: 'Webcam frames and widgets',
+          ul: [
+            'Neon gradient frame, HUD corners and a name tag frame.',
+            'Holiday frames: Christmas, Winter, New Year\'s Eve, Valentine\'s Day, Easter, Halloween, 11 November (Polish Independence Day) and Birthday, each in an animated, realistic and 3D version.',
+            'A scrolling ticker and a socials rotator (Twitch, Kick, YouTube, TikTok, Discord and more).',
+          ],
+        },
+        {
+          h2: 'How to add an overlay to OBS',
+          ol: [
+            'Open overlays.vxh.pl, pick an overlay and set it up in the preview.',
+            'Click Copy next to the Browser Source link.',
+            'In OBS add a Browser Source, paste the link and set the size shown under the preview, e.g. 1920×1080 for screens and effects or 640×360 for frames.',
+          ],
+        },
+        {
+          h2: 'Saved setups and VXH1- codes',
+          p: [
+            'Saved setups live only in this browser\'s localStorage; nothing goes to a server. To move them to another PC, copy a VXH1- share code and paste it in the Share / import tab. The studio code is open source under MIT.',
+          ],
+        },
+      ],
+      faq: [
+        { q: 'Is VXH Overlays free?', a: 'Yes. No account, no plugins and no watermark. The code is open source under MIT.' },
+        { q: 'Is the studio in English?', a: 'The studio interface is in Polish for now. The texts on the overlays are yours to type, so the overlay shows whatever language you use.' },
+        { q: 'Where are my settings stored?', a: 'In the Browser Source link. Saved setups are kept in the browser\'s localStorage, so another browser or clearing site data means no saved setups. Use VXH1- codes to move them.' },
+        { q: 'Does it work in Streamlabs?', a: 'Yes. It works in Streamlabs Desktop and in any app with a Browser Source.' },
+        { q: 'Where is the official site?', a: 'At https://overlays.vxh.pl/. Code: https://github.com/skullboypl/Overlays-VXH.' },
+      ],
+      related: ['faceit', 'obsGuide', 'browserSource'],
     },
     livedelay: {
       id: 'livedelay',
@@ -935,18 +1061,18 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       sections: [
         {
           h2: 'What VXH is',
-          p: ['VXH collects tools that help streamers show viewers more: stats, rank, ELO, delay, shared input and scene looks. There are FACEIT and LoL generators, LiveDelay and INTmouse.'],
+          p: ['VXH collects tools that help streamers show viewers more: stats, rank, ELO, delay, shared input and scene looks. There are FACEIT and LoL generators, VXH Overlays, LiveDelay and INTmouse.'],
         },
         {
           h2: 'Principles',
-          ul: ['Banners free with no account; LiveDelay is GPL; INTmouse is open source with a free plan and Pro.', 'Banners need no plugins (Browser Source). LiveDelay is an OBS plugin or an app. INTmouse is a separate Windows program.', 'An independent community project, not affiliated with FACEIT or Riot Games.'],
+          ul: ['Banners and overlays free with no account; LiveDelay is GPL; INTmouse is open source with a free plan and Pro.', 'Banners and overlays need no plugins (Browser Source). LiveDelay is an OBS plugin or an app. INTmouse is a separate Windows program.', 'An independent community project, not affiliated with FACEIT or Riot Games.'],
         },
         {
           h2: 'Code',
-          p: ['FACEIT Banner Studio: MIT. LiveDelay: GPL-2.0-or-later (livedelay.vxh.pl). INTmouse: github.com/skullboypl/intmouse, site intmouse.vxh.pl.'],
+          p: ['FACEIT Banner Studio: MIT. VXH Overlays: MIT (github.com/skullboypl/Overlays-VXH). LiveDelay: GPL-2.0-or-later (livedelay.vxh.pl). INTmouse: github.com/skullboypl/intmouse, site intmouse.vxh.pl.'],
         },
       ],
-      related: ['faceit', 'lol', 'livedelay', 'intmouse'],
+      related: ['faceit', 'overlays', 'lol', 'livedelay', 'intmouse'],
     },
   },
 };

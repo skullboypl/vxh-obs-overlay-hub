@@ -27,6 +27,12 @@ const nav: NavNode[] = [
     { id: 'faceitLayouts', label: L.layouts },
     { href: TOOL_URL.faceit, label: L.gen, ext: true },
   ] },
+  { key: 'overlays', label: ui.nav.overlays, dot: '#a855f7', items: [
+    { id: 'overlays', label: L.overview },
+    { href: TOOL_URL.overlays, label: lang === 'pl' ? 'Otwórz studio' : 'Open the studio', ext: true },
+    { href: TOOL_URL.overlaysGuide, label: lang === 'pl' ? 'Jak dodać do OBS' : 'OBS setup guide (PL)', ext: true },
+    { href: TOOL_URL.overlaysRepo, label: 'GitHub', ext: true },
+  ] },
   { key: 'lol', label: ui.nav.lol, dot: '#eb3d4d', items: [
     { id: 'lol', label: L.overview },
     { id: 'lolLayouts', label: L.layouts },
