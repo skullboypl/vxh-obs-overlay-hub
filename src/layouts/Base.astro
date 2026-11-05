@@ -18,45 +18,45 @@ const L = {
   pl: { guides: 'Poradniki OBS', home: 'Strona główna', overview: 'Przegląd', layouts: 'Układy', gen: 'Otwórz generator', menu: 'Menu' },
   en: { guides: 'OBS guides', home: 'Home', overview: 'Overview', layouts: 'Layouts', gen: 'Open generator', menu: 'Menu' },
 }[lang];
-type NavItem = { id?: PageId; href?: string; label: string; ext?: boolean };
-type NavNode = { key: string; label: string; dot?: string; items?: NavItem[]; id?: PageId };
+type NavItem = { id?: PageId; href?: string; label: string; ext?: boolean; logo?: string };
+type NavNode = { key: string; label: string; dot?: string; logo?: string; items?: NavItem[]; id?: PageId };
 const nav: NavNode[] = [
   { key: 'home', id: 'home', label: L.home },
-  { key: 'faceit', label: ui.nav.faceit, dot: '#ff5900', items: [
+  { key: 'faceit', label: ui.nav.faceit, logo: '/img/logos/faceit.png', items: [
     { id: 'faceit', label: L.overview },
     { id: 'faceitLayouts', label: L.layouts },
     { href: TOOL_URL.faceit, label: L.gen, ext: true },
   ] },
-  { key: 'overlays', label: ui.nav.overlays, dot: '#a855f7', items: [
+  { key: 'overlays', label: ui.nav.overlays, logo: '/img/logos/overlays.svg', items: [
     { id: 'overlays', label: L.overview },
     { href: TOOL_URL.overlays, label: lang === 'pl' ? 'Otwórz studio' : 'Open the studio', ext: true },
     { href: TOOL_URL.overlaysGuide, label: lang === 'pl' ? 'Jak dodać do OBS' : 'OBS setup guide (PL)', ext: true },
     { href: TOOL_URL.overlaysRepo, label: 'GitHub', ext: true },
   ] },
-  { key: 'lol', label: ui.nav.lol, dot: '#eb3d4d', items: [
+  { key: 'lol', label: ui.nav.lol, logo: '/img/logos/lol.svg', items: [
     { id: 'lol', label: L.overview },
     { id: 'lolLayouts', label: L.layouts },
     { href: TOOL_URL.lol, label: L.gen, ext: true },
   ] },
-  { key: 'livedelay', label: ui.nav.livedelay, dot: '#ff3b2f', items: [
+  { key: 'livedelay', label: ui.nav.livedelay, logo: '/img/logos/livedelay.svg', items: [
     { id: 'livedelay', label: L.overview },
     { href: lang === 'en' ? TOOL_URL.livedelayEn : TOOL_URL.livedelay, label: lang === 'pl' ? 'Strona livedelay.vxh.pl' : 'Site livedelay.vxh.pl', ext: true },
     { href: TOOL_URL.livedelayDownload, label: lang === 'pl' ? 'Pobierz wtyczkę OBS' : 'Download the OBS plugin', ext: true },
     { href: lang === 'en' ? TOOL_URL.livedelayAppEn : TOOL_URL.livedelayApp, label: lang === 'pl' ? 'Aplikacja bez OBS' : 'App without OBS', ext: true },
     { href: TOOL_URL.livedelayAppDownload, label: lang === 'pl' ? 'Pobierz aplikację' : 'Download the app', ext: true },
   ] },
-  { key: 'intmouse', label: ui.nav.intmouse, dot: '#7dd3fc', items: [
+  { key: 'intmouse', label: ui.nav.intmouse, logo: '/img/logos/intmouse.svg', items: [
     { id: 'intmouse', label: L.overview },
     { href: TOOL_URL.intmouse, label: lang === 'pl' ? 'Strona intmouse.vxh.pl' : 'Site intmouse.vxh.pl', ext: true },
     { href: TOOL_URL.intmouseDownload, label: lang === 'pl' ? 'Pobierz INTmouse' : 'Download INTmouse', ext: true },
     { href: TOOL_URL.intmouseRepo, label: 'GitHub', ext: true },
   ] },
-  { key: 'more', label: ui.nav.more, dot: '#22c55e', items: [
-    { id: 'pliki', label: lang === 'pl' ? 'pliki.vxh.pl - pliki przez WiFi' : 'pliki.vxh.pl - files over WiFi' },
+  { key: 'more', label: ui.nav.more, logo: '/img/logos/more.svg', items: [
+    { id: 'pliki', logo: '/img/logos/pliki.svg', label: 'pliki.vxh.pl' },
     { href: TOOL_URL.pliki, label: lang === 'pl' ? 'Wyślij plik' : 'Send a file', ext: true },
-    { id: 'chat', label: lang === 'pl' ? 'chat.vxh.pl - czat E2E' : 'chat.vxh.pl - E2E chat' },
+    { id: 'chat', logo: '/img/logos/chat.svg', label: 'chat.vxh.pl' },
     { href: TOOL_URL.chat, label: lang === 'pl' ? 'Otwórz czat' : 'Open the chat', ext: true },
-    { id: 'fpsblindtest', label: 'FPS Blind Test' },
+    { id: 'fpsblindtest', logo: '/img/logos/fps.svg', label: 'FPS Blind Test' },
     { href: lang === 'en' ? TOOL_URL.fpsblindtestEn : TOOL_URL.fpsblindtest, label: lang === 'pl' ? 'Zacznij test FPS' : 'Start the FPS test', ext: true },
   ] },
   { key: 'obs', label: L.guides, items: [
@@ -114,13 +114,13 @@ const arrow = 'M7 17 17 7M8 7h9v9';
       {nav.map((n) => n.items ? (
         <details class="nav-sec" name="nav" open={n.items.some((it) => it.id === id)}>
           <summary>
-            {n.dot && <i class="dot" style={`--dot:${n.dot}`}></i>}<span>{n.label}</span>
+            {n.logo ? <img class="nav-logo" src={n.logo} alt="" width="18" height="18" /> : n.dot && <i class="dot" style={`--dot:${n.dot}`}></i>}<span>{n.label}</span>
             <svg class="icon chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
           </summary>
           <div class="nav-sub">
             {n.items.map((it) => it.ext
               ? <a class="ext" href={it.href} target="_blank" rel="noopener">{it.label}<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={arrow} /></svg></a>
-              : <a href={urlFor(it.id!, lang)} aria-current={it.id === id ? 'page' : undefined}>{it.label}</a>)}
+              : <a href={urlFor(it.id!, lang)} aria-current={it.id === id ? 'page' : undefined}>{it.logo && <img class="nav-sub-logo" src={it.logo} alt="" width="14" height="14" />}{it.label}</a>)}
           </div>
         </details>
       ) : (
