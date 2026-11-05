@@ -92,6 +92,12 @@ h1 em{font-style:normal;color:var(--accent)}
 .card h3{margin:0;font-size:22px;font-weight:800;letter-spacing:-.02em}
 .card p{margin:0;color:var(--muted);font-size:14px}
 .card .btns{margin-top:auto;padding-top:14px}
+.more-tools{margin:8px 0 0}
+.more-tools .sect-head{margin-top:30px}
+.more-lead{margin:-4px 0 0;color:var(--muted);font-size:15px}
+.cards-sm{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:18px}
+.cards-sm .card h3{font-size:19px}
+.cards-sm .card .body{padding:16px 18px 18px}
 .panel{padding:6px 28px 30px;margin:0 0 18px;background:var(--panel);border:1px solid var(--line);border-radius:8px}
 h2{margin:28px 0 10px;padding-top:6px;font-size:19px;line-height:1.3;font-weight:700;letter-spacing:-.3px}
 p{margin:0 0 12px}

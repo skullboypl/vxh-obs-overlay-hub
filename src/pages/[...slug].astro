@@ -157,6 +157,10 @@ const tools = [
   { id: 'chat' as const, name: 'chat.vxh.pl', img: '/img/chat-preview.webp', c: '#8b5cf6', hover: '#a78bfa', tag: lang === 'pl' ? 'Czat E2E' : 'E2E chat', href: TOOL_URL.chat, more: urlFor('chat', lang) },
   { id: 'fpsblindtest' as const, name: 'FPS Blind Test', img: '/img/fpsblindtest-preview.webp', c: '#22d3ee', hover: '#67e8f9', tag: lang === 'pl' ? 'Test monitora' : 'Monitor test', href: lang === 'en' ? TOOL_URL.fpsblindtestEn : TOOL_URL.fpsblindtest, more: urlFor('fpsblindtest', lang) },
 ];
+// Main streaming tools get the big cards; the rest has its own section under the recommendation.
+const OTHER_TOOLS = ['pliki', 'chat', 'fpsblindtest'];
+const mainTools = tools.filter((t) => !OTHER_TOOLS.includes(t.id));
+const otherTools = tools.filter((t) => OTHER_TOOLS.includes(t.id));
 const toolDesc = {
   faceit: { pl: 'ELO, level i statystyki CS2. 18 układów solo i 13 układów VERSUS.', en: 'ELO, level and CS2 stats. 18 solo and 13 VERSUS layouts.' },
   overlays: { pl: 'Ekrany startu, BRB i końca, efekty, ramki na kamerkę i paski. Ustawienia w linku, bez konta.', en: 'Starting soon, BRB and ending screens, effects, webcam frames and tickers. Settings in the link, no account.' },
@@ -222,7 +226,7 @@ const shotAlt = page.app === 'faceit'
           </figure>
         </div>
         <div class="cards">
-          {tools.map((t) => (
+          {mainTools.map((t) => (
             <article class="card" style={`--c:${t.c}`}>
               <div class="img"><img src={t.img} alt="" width="1000" height="500" loading="lazy" /></div>
               <div class="body">
@@ -241,6 +245,29 @@ const shotAlt = page.app === 'faceit'
     )}
 
     {id === 'home' && <Recommend lang={lang} />}
+
+    {id === 'home' && (
+      <section class="more-tools" aria-labelledby="more-tools-h">
+        <div class="sect-head"><h2 id="more-tools-h">{lang === 'pl' ? 'Inne narzędzia' : 'More tools'}</h2><small>{otherTools.length}</small></div>
+        <p class="more-lead">{lang === 'pl' ? 'Darmowe narzędzia w przeglądarce od tego samego autora: pliki przez WiFi, prywatny czat i test płynności monitora.' : 'Free browser tools from the same author: files over WiFi, private chat and a monitor smoothness test.'}</p>
+        <div class="cards cards-sm">
+          {otherTools.map((t) => (
+            <article class="card" style={`--c:${t.c}`}>
+              <div class="img"><img src={t.img} alt="" width="1000" height="500" loading="lazy" /></div>
+              <div class="body">
+                <span class="tag">{t.tag}</span>
+                <h3>{t.name}</h3>
+                <p>{toolDesc[t.id][lang]}</p>
+                <div class="btns">
+                  <a class="cta" style={`--btn:${t.c};--btn-h:${t.hover};--btn-text:${t.id === 'chat' ? '#fff' : '#0b0e13'}`} href={t.href} rel="noopener">{toolCta[t.id]}</a>
+                  <a class="cta alt" href={t.more}>{lang === 'pl' ? 'Dowiedz się więcej' : 'Learn more'}</a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
 
     {shot && (
       <div class="window">
