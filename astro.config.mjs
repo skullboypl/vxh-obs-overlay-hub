@@ -15,5 +15,11 @@ export default defineConfig({
     '/en/go/intmouse/': 'https://intmouse.vxh.pl/',
     '/go/overlays/': 'https://overlays.vxh.pl/',
     '/en/go/overlays/': 'https://overlays.vxh.pl/',
+    '/go/pliki/': 'https://pliki.vxh.pl/',
+    '/en/go/pliki/': 'https://pliki.vxh.pl/',
+    '/go/chat/': 'https://chat.vxh.pl/',
+    '/en/go/chat/': 'https://chat.vxh.pl/',
+    '/go/fpsblindtest/': 'https://fpsblindtest.vxh.pl/',
+    '/en/go/fpsblindtest/': 'https://fpsblindtest.vxh.pl/en/',
   },
 });

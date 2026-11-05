@@ -1,6 +1,6 @@
 # VXH – Visual eXtras Hub
 
-> Darmowe generatory banerów i overlayów do OBS Studio i Streamlabs, LiveDelay — wtyczka OBS i aplikacja, delay i lokalny multistream bez reconnecta — oraz INTmouse — jedna mysz i klawiatura na kilku PC. / Free banner and overlay generators for OBS Studio and Streamlabs, LiveDelay — an OBS plugin and an app, delay and local multistream without reconnecting — and INTmouse — one mouse and keyboard across several PCs.
+> Darmowe generatory banerów i overlayów do OBS Studio i Streamlabs, LiveDelay — wtyczka OBS i aplikacja, delay i lokalny multistream bez reconnecta — INTmouse — jedna mysz i klawiatura na kilku PC — oraz pliki przez WiFi, czat E2E i FPS Blind Test. / Free banner and overlay generators for OBS Studio and Streamlabs, LiveDelay — an OBS plugin and an app, delay and local multistream without reconnecting — INTmouse — one mouse and keyboard across several PCs — plus WiFi file transfer, E2E chat and FPS Blind Test.
 
 ## Narzędzia / Tools
 - [FACEIT Banner Studio](https://vxh.pl/faceit/): baner FACEIT z ELO, levelem i statystykami CS2. 18 układów solo, 13 VERSUS. Generator: https://faceitbanner.vxh.pl/
@@ -8,6 +8,9 @@
 - [LoL Banner Studio](https://vxh.pl/lol/): baner rangi League of Legends (Solo/Duo, Flex, LP, winrate). 8 układów. Generator: https://lolbanner.vxh.pl/
 - [LiveDelay](https://vxh.pl/livedelay/): wtyczka OBS i osobna aplikacja 0.1 (Streamlabs, Meld Studio, XSplit, vMix). Ten sam silnik: delay Arm → Activate → Cut bez reconnecta i lokalny multistream. Strona: https://livedelay.vxh.pl/ · Aplikacja: https://livedelay.vxh.pl/opoznienie-bez-obs/ · Wtyczka: https://github.com/skullboypl/livedelay-obs/releases/latest · Aplikacja (zip): https://github.com/skullboypl/livedelay-standalone-app/releases/latest · Redirect: https://vxh.pl/go/livedelay/
 - [INTmouse](https://vxh.pl/intmouse/): wspólna mysz i klawiatura na kilku Windows PC w LAN (schowek, pliki, hasło, panic key). Strona: https://intmouse.vxh.pl/ · Wydania: https://github.com/skullboypl/intmouse/releases/latest · Redirect: https://vxh.pl/go/intmouse/
+- [pliki.vxh.pl](https://vxh.pl/pliki/): przesyłanie plików między telefonem, komputerem i tabletem w tej samej sieci WiFi/LAN. P2P przez WebRTC, w przeglądarce, bez aplikacji, konta i chmury. Strona: https://pliki.vxh.pl/ · Kod: https://github.com/skullboypl/pliki.vxh.pl · Redirect: https://vxh.pl/go/pliki/
+- [chat.vxh.pl](https://vxh.pl/chat/): prywatne pokoje czatu na hasło z szyfrowaniem E2E (AES-GCM), linki zaproszenia, bez konta, wiadomości nie są zapisywane, PWA. Strona: https://chat.vxh.pl/ · Kod: https://github.com/skullboypl/private-room-chat · Redirect: https://vxh.pl/go/chat/
+- [FPS Blind Test](https://vxh.pl/fps-blind-test/): ślepy test płynności w przeglądarce (zgadnij FPS, porównanie A/B, tryby 3D), 30-600 FPS do limitu Hz monitora, wynik jako PNG. Strona: https://fpsblindtest.vxh.pl/ · Redirect: https://vxh.pl/go/fpsblindtest/
 
 ## Poradniki / Guides
 - [Jak dodać baner do OBS](https://vxh.pl/obs/jak-dodac-baner-do-obs/)
@@ -21,6 +24,9 @@
 - [LoL rank banner for OBS](https://vxh.pl/en/lol/)
 - [LiveDelay, OBS plugin and app](https://vxh.pl/en/livedelay/) → https://livedelay.vxh.pl/en/ · app: https://livedelay.vxh.pl/en/stream-delay-without-obs/
 - [INTmouse](https://vxh.pl/en/intmouse/) → https://intmouse.vxh.pl/
+- [pliki.vxh.pl, files over WiFi](https://vxh.pl/en/pliki/) → https://pliki.vxh.pl/en
+- [chat.vxh.pl, E2E chat rooms](https://vxh.pl/en/chat/) → https://chat.vxh.pl/
+- [FPS Blind Test](https://vxh.pl/en/fps-blind-test/) → https://fpsblindtest.vxh.pl/en/
 - [How to add a banner to OBS](https://vxh.pl/en/obs/how-to-add-a-banner-to-obs/)
 
 Niezależny projekt społeczności, niepowiązany z FACEIT ani Riot Games. / Independent community project, not affiliated with FACEIT or Riot Games.

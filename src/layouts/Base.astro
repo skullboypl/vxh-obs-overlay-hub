@@ -51,6 +51,14 @@ const nav: NavNode[] = [
     { href: TOOL_URL.intmouseDownload, label: lang === 'pl' ? 'Pobierz INTmouse' : 'Download INTmouse', ext: true },
     { href: TOOL_URL.intmouseRepo, label: 'GitHub', ext: true },
   ] },
+  { key: 'more', label: ui.nav.more, dot: '#22c55e', items: [
+    { id: 'pliki', label: lang === 'pl' ? 'pliki.vxh.pl - pliki przez WiFi' : 'pliki.vxh.pl - files over WiFi' },
+    { href: TOOL_URL.pliki, label: lang === 'pl' ? 'Wyślij plik' : 'Send a file', ext: true },
+    { id: 'chat', label: lang === 'pl' ? 'chat.vxh.pl - czat E2E' : 'chat.vxh.pl - E2E chat' },
+    { href: TOOL_URL.chat, label: lang === 'pl' ? 'Otwórz czat' : 'Open the chat', ext: true },
+    { id: 'fpsblindtest', label: 'FPS Blind Test' },
+    { href: lang === 'en' ? TOOL_URL.fpsblindtestEn : TOOL_URL.fpsblindtest, label: lang === 'pl' ? 'Zacznij test FPS' : 'Start the FPS test', ext: true },
+  ] },
   { key: 'obs', label: L.guides, items: [
     { id: 'obsGuide', label: 'OBS Studio' },
     { id: 'streamlabs', label: 'Streamlabs' },

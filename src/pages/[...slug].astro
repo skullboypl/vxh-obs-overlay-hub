@@ -108,6 +108,27 @@ if (id === 'overlays') {
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'PLN' },
   });
 }
+const WEB_APPS: Partial<Record<PageId, { name: string; cat: string; sub: string; url: string; repo?: string }>> = {
+  pliki: { name: 'pliki.vxh.pl', cat: 'UtilitiesApplication', sub: 'LAN file transfer (WebRTC P2P)', url: TOOL_URL.pliki, repo: TOOL_URL.plikiRepo },
+  chat: { name: 'chat.vxh.pl', cat: 'CommunicationApplication', sub: 'End-to-end encrypted chat rooms', url: TOOL_URL.chat, repo: TOOL_URL.chatRepo },
+  fpsblindtest: { name: 'FPS Blind Test', cat: 'UtilitiesApplication', sub: 'Frame rate perception test', url: TOOL_URL.fpsblindtest },
+};
+const webApp = WEB_APPS[id];
+if (webApp) {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: webApp.name,
+    applicationCategory: webApp.cat,
+    applicationSubCategory: webApp.sub,
+    operatingSystem: 'Web',
+    description: page.description,
+    inLanguage: ['pl', 'en'],
+    url: webApp.url,
+    ...(webApp.repo ? { codeRepository: webApp.repo } : {}),
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'PLN' },
+  });
+}
 if (page.faq?.length) {
   jsonLd.push({
     '@context': 'https://schema.org',
@@ -132,6 +153,9 @@ const tools = [
   { id: 'lol' as const, name: 'LoL Banner Studio', img: '/img/lol-preview.webp', c: '#eb3d4d', hover: '#f25a68', tag: 'League of Legends', href: TOOL_URL.lol, more: urlFor('lol', lang) },
   { id: 'livedelay' as const, name: 'LiveDelay', img: '/img/livedelay-preview.webp', c: '#ff3b2f', hover: '#ff5a4f', tag: lang === 'pl' ? 'Wtyczka OBS + aplikacja' : 'OBS plugin + app', href: lang === 'en' ? TOOL_URL.livedelayEn : TOOL_URL.livedelay, more: urlFor('livedelay', lang) },
   { id: 'intmouse' as const, name: 'INTmouse', img: '/img/intmouse-preview.webp', c: '#7dd3fc', hover: '#a5e4fd', tag: lang === 'pl' ? 'Multi-PC input' : 'Multi-PC input', href: TOOL_URL.intmouse, more: urlFor('intmouse', lang) },
+  { id: 'pliki' as const, name: 'pliki.vxh.pl', img: '/img/pliki-preview.webp', c: '#22c55e', hover: '#4ade80', tag: lang === 'pl' ? 'Pliki przez WiFi' : 'Files over WiFi', href: TOOL_URL.pliki, more: urlFor('pliki', lang) },
+  { id: 'chat' as const, name: 'chat.vxh.pl', img: '/img/chat-preview.webp', c: '#8b5cf6', hover: '#a78bfa', tag: lang === 'pl' ? 'Czat E2E' : 'E2E chat', href: TOOL_URL.chat, more: urlFor('chat', lang) },
+  { id: 'fpsblindtest' as const, name: 'FPS Blind Test', img: '/img/fpsblindtest-preview.webp', c: '#22d3ee', hover: '#67e8f9', tag: lang === 'pl' ? 'Test monitora' : 'Monitor test', href: lang === 'en' ? TOOL_URL.fpsblindtestEn : TOOL_URL.fpsblindtest, more: urlFor('fpsblindtest', lang) },
 ];
 const toolDesc = {
   faceit: { pl: 'ELO, level i statystyki CS2. 18 układów solo i 13 układów VERSUS.', en: 'ELO, level and CS2 stats. 18 solo and 13 VERSUS layouts.' },
@@ -139,6 +163,9 @@ const toolDesc = {
   lol: { pl: 'Ranga Solo/Duo i Flex, LP i winrate z Riot ID. 8 układów.', en: 'Solo/Duo and Flex rank, LP and win rate from your Riot ID. 8 layouts.' },
   livedelay: { pl: 'Wtyczka OBS i aplikacja. Delay Arm → Activate → Cut bez reconnecta i lokalny multistream.', en: 'OBS plugin and app. Delay Arm → Activate → Cut without reconnecting, and local multistream.' },
   intmouse: { pl: 'Jedna mysz i klawiatura na kilku PC w LAN. Schowek, pliki, hasło.', en: 'One mouse and keyboard across PCs on your LAN. Clipboard, files, password.' },
+  pliki: { pl: 'Pliki między telefonem a komputerem w tej samej WiFi. P2P, bez aplikacji i bez chmury.', en: 'Files between phone and computer on the same WiFi. Peer-to-peer, no app, no cloud.' },
+  chat: { pl: 'Prywatne pokoje na hasło z szyfrowaniem E2E. Bez konta, wiadomości nie są zapisywane.', en: 'Private password rooms with end-to-end encryption. No account, messages are not stored.' },
+  fpsblindtest: { pl: 'Ślepy test płynności: zgadnij FPS albo wybierz płynniejszą animację. Także w 3D.', en: 'Blind smoothness test: guess the FPS or pick the smoother animation. 3D modes too.' },
 };
 const toolCta = {
   faceit: ui.openTool,
@@ -146,10 +173,13 @@ const toolCta = {
   lol: ui.openTool,
   livedelay: lang === 'pl' ? 'Otwórz livedelay.vxh.pl' : 'Open livedelay.vxh.pl',
   intmouse: lang === 'pl' ? 'Otwórz intmouse.vxh.pl' : 'Open intmouse.vxh.pl',
+  pliki: lang === 'pl' ? 'Wyślij plik' : 'Send a file',
+  chat: lang === 'pl' ? 'Otwórz czat' : 'Open the chat',
+  fpsblindtest: lang === 'pl' ? 'Zacznij test' : 'Start the test',
 };
 const heroH1 = id === 'home' ? (lang === 'pl' ? 'Banery na Twój stream' : 'Banners for your stream') : page.h1;
-const shot = page.app === 'faceit' ? '/img/faceit-generator.webp' : page.app === 'lol' ? '/img/lol-generator.webp' : id === 'livedelay' ? '/img/livedelay-overlay.png' : id === 'intmouse' ? '/img/intmouse-ui.png' : id === 'overlays' ? '/img/overlays-studio.webp' : undefined;
-const shotUrl = page.app === 'faceit' ? 'faceitbanner.vxh.pl' : page.app === 'lol' ? 'lolbanner.vxh.pl' : id === 'livedelay' ? 'livedelay.vxh.pl' : id === 'intmouse' ? 'intmouse.vxh.pl' : id === 'overlays' ? 'overlays.vxh.pl' : '';
+const shot = page.app === 'faceit' ? '/img/faceit-generator.webp' : page.app === 'lol' ? '/img/lol-generator.webp' : id === 'livedelay' ? '/img/livedelay-overlay.png' : id === 'intmouse' ? '/img/intmouse-ui.png' : id === 'overlays' ? '/img/overlays-studio.webp' : id === 'pliki' || id === 'chat' || id === 'fpsblindtest' ? `/img/${id}-site.webp` : undefined;
+const shotUrl = page.app === 'faceit' ? 'faceitbanner.vxh.pl' : page.app === 'lol' ? 'lolbanner.vxh.pl' : id === 'livedelay' ? 'livedelay.vxh.pl' : id === 'intmouse' ? 'intmouse.vxh.pl' : id === 'overlays' ? 'overlays.vxh.pl' : id === 'pliki' ? 'pliki.vxh.pl' : id === 'chat' ? 'chat.vxh.pl' : id === 'fpsblindtest' ? 'fpsblindtest.vxh.pl' : '';
 const shotAlt = page.app === 'faceit'
   ? (lang === 'pl' ? 'Generator FACEIT Banner Studio z podglądem na żywo' : 'FACEIT Banner Studio generator with live preview')
   : page.app === 'lol'
@@ -158,6 +188,12 @@ const shotAlt = page.app === 'faceit'
       ? (lang === 'pl' ? 'INTmouse - wspólna mysz na kilku komputerach' : 'INTmouse - shared mouse across several PCs')
       : id === 'overlays'
         ? (lang === 'pl' ? 'Studio VXH Overlays z podglądem ekranu Zaraz startujemy i panelem ustawień' : 'VXH Overlays studio with a starting soon screen preview and the settings panel')
+      : id === 'pliki'
+        ? (lang === 'pl' ? 'pliki.vxh.pl: ekran wysyłania pliku z listą urządzeń w sieci' : 'pliki.vxh.pl: the send screen with the list of devices on the network')
+      : id === 'chat'
+        ? (lang === 'pl' ? 'chat.vxh.pl: ekran wejścia z nickiem i avatarem' : 'chat.vxh.pl: the entry screen with nickname and avatar')
+      : id === 'fpsblindtest'
+        ? (lang === 'pl' ? 'FPS Blind Test: wykryte odświeżanie monitora i wybór trybu testu' : 'FPS Blind Test: detected refresh rate and test mode picker')
       : (lang === 'pl' ? 'Edytor wyglądu overlayu LiveDelay' : 'LiveDelay overlay appearance editor');
 ---
 <Base lang={lang} id={id} title={page.title} description={page.description} crumb={page.h1} jsonLd={jsonLd}>
@@ -194,7 +230,7 @@ const shotAlt = page.app === 'faceit'
                 <h3>{t.name}</h3>
                 <p>{toolDesc[t.id][lang]}</p>
                 <div class="btns">
-                  <a class="cta" style={`--btn:${t.c};--btn-h:${t.hover};--btn-text:${t.id === 'intmouse' ? '#0b0e13' : '#fff'}`} href={t.href} rel={t.id === 'livedelay' || t.id === 'intmouse' || t.id === 'overlays' ? 'noopener' : undefined}>{toolCta[t.id]}</a>
+                  <a class="cta" style={`--btn:${t.c};--btn-h:${t.hover};--btn-text:${t.id === 'intmouse' || t.id === 'pliki' || t.id === 'fpsblindtest' ? '#0b0e13' : '#fff'}`} href={t.href} rel={t.id === 'faceit' || t.id === 'lol' ? undefined : 'noopener'}>{toolCta[t.id]}</a>
                   <a class="cta alt" href={t.more}>{lang === 'pl' ? 'Dowiedz się więcej' : 'Learn more'}</a>
                 </div>
               </div>
@@ -209,7 +245,7 @@ const shotAlt = page.app === 'faceit'
     {shot && (
       <div class="window">
         <div class="window-bar"><i></i><i></i><i></i><span>{shotUrl}</span></div>
-        <img src={shot} alt={shotAlt} width="1600" height={id === 'overlays' ? 900 : 1000} fetchpriority="high" />
+        <img src={shot} alt={shotAlt} width="1600" height={id === 'overlays' || id === 'pliki' || id === 'chat' || id === 'fpsblindtest' ? 900 : 1000} fetchpriority="high" />
       </div>
     )}
 

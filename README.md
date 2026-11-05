@@ -31,6 +31,9 @@
 | **LoL Banner Studio** | Ranga Solo/Duo i Flex, LP, winrate i profil z Riot ID. 8 układów | [lolbanner.vxh.pl](https://lolbanner.vxh.pl/) |
 | **LiveDelay** | Wtyczka OBS i aplikacja 0.1. Delay bez reconnecta (Arm → Activate → Cut), lokalny multistream, overlay | [livedelay.vxh.pl](https://livedelay.vxh.pl/) · aplikacja: [/opoznienie-bez-obs/](https://livedelay.vxh.pl/opoznienie-bez-obs/) · hub: [/livedelay/](https://vxh.pl/livedelay/) · redirect: [/go/livedelay/](https://vxh.pl/go/livedelay/) |
 | **INTmouse** | Jedna mysz i klawiatura na kilku Windows PC w LAN (schowek, pliki, hasło) | [intmouse.vxh.pl](https://intmouse.vxh.pl/) · hub: [/intmouse/](https://vxh.pl/intmouse/) · redirect: [/go/intmouse/](https://vxh.pl/go/intmouse/) |
+| **pliki.vxh.pl** | Pliki między telefonem a komputerem w tej samej WiFi, P2P przez WebRTC, bez aplikacji i chmury | [pliki.vxh.pl](https://pliki.vxh.pl/) · hub: [/pliki/](https://vxh.pl/pliki/) · redirect: [/go/pliki/](https://vxh.pl/go/pliki/) |
+| **chat.vxh.pl** | Prywatne pokoje czatu na hasło z szyfrowaniem E2E, bez konta i zapisu wiadomości | [chat.vxh.pl](https://chat.vxh.pl/) · hub: [/chat/](https://vxh.pl/chat/) · redirect: [/go/chat/](https://vxh.pl/go/chat/) |
+| **FPS Blind Test** | Ślepy test płynności: zgadnij FPS, porównanie A/B i tryby 3D, 30-600 FPS | [fpsblindtest.vxh.pl](https://fpsblindtest.vxh.pl/) · hub: [/fps-blind-test/](https://vxh.pl/fps-blind-test/) · redirect: [/go/fpsblindtest/](https://vxh.pl/go/fpsblindtest/) |
 
 ![Generator FACEIT Banner Studio](public/img/faceit-generator.webp)
 
@@ -78,6 +81,7 @@ assets-src/                    źródłowe zrzuty generatorów
 scripts/make-images.mjs        zrzuty -> public/img (WebP) i grafika OG
 scripts/make-logo.mjs          public/logo.svg -> PNG
 scripts/make-overlays-preview.mjs  zrzut studia Overlays -> public/img (karta i zrzut)
+scripts/make-tools-preview.mjs  zrzuty pliki, chat i FPS Blind Test -> public/img
 deploy/nginx.conf, Dockerfile  wdrożenie
 ```
 

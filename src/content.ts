@@ -20,6 +20,18 @@ export const TOOL_URL = {
   intmouse: 'https://intmouse.vxh.pl/',
   intmouseRepo: 'https://github.com/skullboypl/intmouse',
   intmouseDownload: 'https://github.com/skullboypl/intmouse/releases/latest',
+  pliki: 'https://pliki.vxh.pl/',
+  plikiGuide: 'https://pliki.vxh.pl/pl/wyslij-plik-wifi',
+  plikiGuideEn: 'https://pliki.vxh.pl/en/send-file-wifi',
+  plikiRepo: 'https://github.com/skullboypl/pliki.vxh.pl',
+  chat: 'https://chat.vxh.pl/',
+  chatHow: 'https://chat.vxh.pl/pl/jak-dziala',
+  chatHowEn: 'https://chat.vxh.pl/en/jak-dziala',
+  chatRepo: 'https://github.com/skullboypl/private-room-chat',
+  fpsblindtest: 'https://fpsblindtest.vxh.pl/',
+  fpsblindtestEn: 'https://fpsblindtest.vxh.pl/en/',
+  fpsblindtestAbout: 'https://fpsblindtest.vxh.pl/o-tescie-fps.html',
+  fpsblindtestAboutEn: 'https://fpsblindtest.vxh.pl/en/about-fps-test.html',
 } as const;
 
 export const SMOOTHWIZARD = {
@@ -91,7 +103,7 @@ export const LOL_LAYOUT_META = [
 export type Faq = { q: string; a: string };
 export type Section = { h2: string; p?: string[]; ul?: string[]; ol?: string[] };
 export type Cta = { label: string; href: string };
-export type PageId = 'home' | 'faceit' | 'faceitLayouts' | 'overlays' | 'lol' | 'lolLayouts' | 'livedelay' | 'intmouse' | 'obsGuide' | 'streamlabs' | 'browserSource' | 'faq' | 'about';
+export type PageId = 'home' | 'faceit' | 'faceitLayouts' | 'overlays' | 'lol' | 'lolLayouts' | 'livedelay' | 'intmouse' | 'pliki' | 'chat' | 'fpsblindtest' | 'obsGuide' | 'streamlabs' | 'browserSource' | 'faq' | 'about';
 export type Kind = 'home' | 'article' | 'layouts' | 'faq' | 'about';
 
 export type Page = {
@@ -120,6 +132,9 @@ export const PATHS: Record<PageId, Record<Lang, string>> = {
   lolLayouts: { pl: 'lol/uklady/', en: 'lol/layouts/' },
   livedelay: { pl: 'livedelay/', en: 'livedelay/' },
   intmouse: { pl: 'intmouse/', en: 'intmouse/' },
+  pliki: { pl: 'pliki/', en: 'pliki/' },
+  chat: { pl: 'chat/', en: 'chat/' },
+  fpsblindtest: { pl: 'fps-blind-test/', en: 'fps-blind-test/' },
   obsGuide: { pl: 'obs/jak-dodac-baner-do-obs/', en: 'obs/how-to-add-a-banner-to-obs/' },
   streamlabs: { pl: 'obs/streamlabs/', en: 'obs/streamlabs/' },
   browserSource: { pl: 'obs/browser-source-ustawienia/', en: 'obs/browser-source-settings/' },
@@ -133,7 +148,7 @@ export const UI = {
   pl: {
     htmlLang: 'pl',
     tagline: 'Narzędzia i overlaye, które podkręcają Twój stream.',
-    nav: { faceit: 'FACEIT Banner', overlays: 'Overlays', lol: 'LoL Banner', livedelay: 'Live Delay', intmouse: 'INTmouse', obs: 'Poradniki OBS', faq: 'FAQ', about: 'O VXH' },
+    nav: { faceit: 'FACEIT Banner', overlays: 'Overlays', lol: 'LoL Banner', livedelay: 'Live Delay', intmouse: 'INTmouse', more: 'Inne narzędzia', obs: 'Poradniki OBS', faq: 'FAQ', about: 'O VXH' },
     langSwitch: 'EN',
     langSwitchLabel: 'English version',
     skip: 'Przejdź do treści',
@@ -155,7 +170,7 @@ export const UI = {
   en: {
     htmlLang: 'en',
     tagline: 'Tools and overlays that level up your stream.',
-    nav: { faceit: 'FACEIT Banner', overlays: 'Overlays', lol: 'LoL Banner', livedelay: 'Live Delay', intmouse: 'INTmouse', obs: 'OBS guides', faq: 'FAQ', about: 'About VXH' },
+    nav: { faceit: 'FACEIT Banner', overlays: 'Overlays', lol: 'LoL Banner', livedelay: 'Live Delay', intmouse: 'INTmouse', more: 'More tools', obs: 'OBS guides', faq: 'FAQ', about: 'About VXH' },
     langSwitch: 'PL',
     langSwitchLabel: 'Wersja polska',
     skip: 'Skip to content',
@@ -195,7 +210,7 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       id: 'home',
       kind: 'home',
       title: 'VXH – Visual eXtras Hub | Overlaye i banery do OBS dla streamerów',
-      description: 'VXH – Visual eXtras Hub: darmowe banery FACEIT i LoL, animowane overlaye do OBS, LiveDelay (delay bez reconnecta) i INTmouse - jedna mysz i klawiatura na kilku PC.',
+      description: 'VXH – Visual eXtras Hub: darmowe banery FACEIT i LoL, animowane overlaye do OBS, LiveDelay (delay bez reconnecta), INTmouse - jedna mysz na kilku PC, oraz pliki przez WiFi, czat E2E i FPS Blind Test.',
       h1: 'Visual eXtras Hub dla streamerów',
       lead: 'Darmowe generatory banerów i animowanych overlayów do OBS Studio i Streamlabs, LiveDelay - delay włączany na żywo bez zrywania streamu, oraz INTmouse - wspólna mysz i klawiatura na kilku komputerach w LAN.',
       eyebrow: 'VXH · Visual eXtras Hub',
@@ -216,6 +231,7 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
             'Banery i overlaye działają w przeglądarce, bez konta i bez wtyczek.',
             'LiveDelay to wtyczka OBS i osobna aplikacja: Arm → Activate → Cut, bez reconnecta, plus lokalny multistream.',
             'INTmouse łączy kilka PC w sieci: mysz, klawiatura, schowek i pliki lokalnie, bez chmury.',
+            'Do tego pliki.vxh.pl (pliki przez WiFi bez chmury), chat.vxh.pl (prywatne pokoje E2E) i FPS Blind Test (czy widzisz różnicę 60 a 240 FPS).',
             'Po polsku i po angielsku, z dokumentacją i poradnikami krok po kroku.',
           ],
         },
@@ -453,7 +469,148 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
         { q: 'Gdzie jest oficjalna strona?', a: 'Na https://intmouse.vxh.pl/. Wydania: https://github.com/skullboypl/intmouse/releases/latest.' },
         { q: 'Ile kosztuje?', a: 'Darmowy plan na dwa PC (po jednym monitorze). Pro: miesiąc 9,99 zł albo rok 89 zł. 7 dni pełnej próby raz na komputer.' },
       ],
-      related: ['livedelay', 'about', 'faq'],
+      related: ['pliki', 'chat', 'livedelay'],
+    },
+    pliki: {
+      id: 'pliki',
+      kind: 'article',
+      title: 'pliki.vxh.pl: wyślij plik przez WiFi bez aplikacji i bez chmury | VXH',
+      description: 'pliki.vxh.pl przesyła pliki między telefonem, komputerem i tabletem w tej samej sieci WiFi. P2P przez WebRTC, bez instalacji, bez rejestracji i bez wysyłania do chmury.',
+      h1: 'pliki.vxh.pl - pliki przez WiFi bez chmury',
+      lead: 'Otwierasz stronę na dwóch urządzeniach w tej samej sieci, wybierasz odbiorcę i upuszczasz plik. Dane idą bezpośrednio między urządzeniami, a serwer tylko pomaga je znaleźć.',
+      eyebrow: 'pliki.vxh.pl · transfer w LAN',
+      cta: [
+        { label: 'Wyślij plik na pliki.vxh.pl', href: TOOL_URL.pliki },
+        { label: 'Poradniki', href: TOOL_URL.plikiGuide },
+        { label: 'Kod na GitHubie', href: TOOL_URL.plikiRepo },
+      ],
+      sections: [
+        {
+          h2: 'Co robi pliki.vxh.pl',
+          ul: [
+            'Wysyła zdjęcia, filmy i dokumenty między telefonem, komputerem i tabletem w jednej sieci WiFi albo LAN.',
+            'Działa w przeglądarce: bez aplikacji, bez konta, bez kabla USB i bez limitu chmury.',
+            'Połączenie P2P przez WebRTC: pliki nie trafiają na serwer, ten służy tylko do znalezienia urządzeń w sieci.',
+            'Android i iPhone w jednej sieci bez AirDropa. Duże filmy (MOV, MP4) odbierzesz stabilnie przez OPFS w Safari.',
+            'Można zainstalować jako PWA. Odebrane pliki znikają po zamknięciu karty.',
+          ],
+        },
+        {
+          h2: 'Dla kogo',
+          p: [
+            'Dla każdego, kto chce szybko przerzucić plik z telefonu na komputer albo między dwoma komputerami w domu czy biurze. Streamerom przydaje się do wrzucania nagrań i zdjęć z telefonu na PC do montażu bez chmury.',
+          ],
+        },
+        {
+          h2: 'Jak zacząć',
+          ol: [
+            'Otwórz pliki.vxh.pl na dwóch urządzeniach w tej samej sieci WiFi.',
+            'Wybierz drugie urządzenie z listy "Urządzenia w sieci".',
+            'Kliknij zielony przycisk, przeciągnij pliki na urządzenie albo upuść je na stronie. Na drugim urządzeniu pojawią się w "Odebrane pliki".',
+          ],
+        },
+      ],
+      faq: [
+        { q: 'Czym jest pliki.vxh.pl?', a: 'Darmową stroną do przesyłania plików między urządzeniami w tej samej sieci WiFi lub LAN, bezpośrednio w przeglądarce.' },
+        { q: 'Czy pliki trafiają do chmury?', a: 'Nie. Transfer idzie P2P przez WebRTC w sieci lokalnej. Serwer pomaga tylko urządzeniom się odnaleźć.' },
+        { q: 'Czy muszę coś instalować?', a: 'Nie. Wystarczy przeglądarka na obu urządzeniach. Stronę można też dodać do ekranu głównego jako PWA.' },
+        { q: 'Czy działa między Androidem a iPhone?', a: 'Tak, wystarczy, że oba telefony są w tej samej sieci WiFi.' },
+        { q: 'Gdzie jest oficjalna strona?', a: 'Na https://pliki.vxh.pl/. Kod: https://github.com/skullboypl/pliki.vxh.pl.' },
+      ],
+      related: ['chat', 'intmouse', 'fpsblindtest'],
+    },
+    chat: {
+      id: 'chat',
+      kind: 'article',
+      title: 'chat.vxh.pl: prywatne pokoje czatu z szyfrowaniem E2E | VXH',
+      description: 'chat.vxh.pl to prywatne pokoje czatu z hasłem i szyfrowaniem E2E (AES-GCM). Bez konta, z linkami zaproszenia, wieloma rozmowami naraz i aplikacją PWA. Wiadomości nie są zapisywane.',
+      h1: 'chat.vxh.pl - prywatne pokoje czatu E2E',
+      lead: 'Ustawiasz nick, tworzysz pokój z hasłem i wysyłasz znajomym link zaproszenia. Hasło jest też kluczem szyfrowania, więc serwer przekazuje tylko zaszyfrowane dane.',
+      eyebrow: 'chat.vxh.pl · czat E2E',
+      cta: [
+        { label: 'Otwórz chat.vxh.pl', href: TOOL_URL.chat },
+        { label: 'Jak działa', href: TOOL_URL.chatHow },
+        { label: 'Kod na GitHubie', href: TOOL_URL.chatRepo },
+      ],
+      sections: [
+        {
+          h2: 'Co robi chat.vxh.pl',
+          ul: [
+            'Prywatne pokoje z hasłem i szyfrowaniem E2E (AES-GCM, klucz liczony z hasła w przeglądarce).',
+            'Linki zaproszenia do pokoju i czat grupowy w czasie rzeczywistym.',
+            'Wiele rozmów naraz: na komputerze jako dymki u dołu ekranu, na telefonie na pełnym ekranie. Okienko Picture-in-Picture w Chrome i Edge.',
+            'Zdjęcia kompresowane w przeglądarce i trzymane lokalnie, bez zapisu na dysku serwera.',
+            'Bez konta: nick zostaje w przeglądarce. Instalacja jako PWA.',
+          ],
+        },
+        {
+          h2: 'Prywatność',
+          p: [
+            'Wiadomości nie są archiwizowane. Gdy ostatnia osoba wyjdzie z pokoju, kanał znika z serwera. Logi nie zawierają nicków, haseł ani treści rozmów. Czat nie jest moderowany: to projekt edukacyjny, a za treść odpowiadają uczestnicy.',
+          ],
+        },
+        {
+          h2: 'Jak zacząć',
+          ol: [
+            'Wejdź na chat.vxh.pl i ustaw nick.',
+            'Utwórz pokój albo dołącz do istniejącego, podając jego nazwę i hasło.',
+            'Wyślij znajomym link zaproszenia. Bez poprawnego hasła nikt nie odczyta wiadomości.',
+          ],
+        },
+      ],
+      faq: [
+        { q: 'Czym jest chat.vxh.pl?', a: 'Lekkim czatem w przeglądarce z prywatnymi pokojami na hasło i szyfrowaniem E2E. Bez rejestracji.' },
+        { q: 'Czy wiadomości są zapisywane?', a: 'Nie. Serwer przekazuje je tylko osobom online w pokoju, a pusty pokój jest usuwany.' },
+        { q: 'Co jeśli zapomnę hasła pokoju?', a: 'Bez hasła nie dołączysz ponownie ani nie odczytasz starych wiadomości. Poproś twórcę pokoju o nowy link.' },
+        { q: 'Czy działa na telefonie?', a: 'Tak. Na wąskim ekranie czat otwiera się na pełnym ekranie, można go też zainstalować jako PWA.' },
+        { q: 'Gdzie jest oficjalna strona?', a: 'Na https://chat.vxh.pl/. Kod: https://github.com/skullboypl/private-room-chat.' },
+      ],
+      related: ['pliki', 'intmouse', 'fpsblindtest'],
+    },
+    fpsblindtest: {
+      id: 'fpsblindtest',
+      kind: 'article',
+      title: 'FPS Blind Test: sprawdź, czy widzisz różnicę 60, 120, 240 FPS | VXH',
+      description: 'FPS Blind Test to darmowy test płynności w przeglądarce. Zgadnij FPS bez podpowiedzi albo porównaj dwie animacje A/B, także w scenie 3D. Od 30 do 600 FPS, wynik do pobrania jako PNG.',
+      h1: 'FPS Blind Test - test płynności FPS',
+      lead: 'Ślepa próba zamiast autosugestii: test pokazuje animację, a Ty zgadujesz, przy ilu klatkach działa, albo wybierasz płynniejszą z dwóch. Poziomy FPS dopasowują się do odświeżania Twojego monitora.',
+      eyebrow: 'FPS Blind Test · test monitora',
+      cta: [
+        { label: 'Zacznij test na fpsblindtest.vxh.pl', href: TOOL_URL.fpsblindtest },
+        { label: 'O teście FPS', href: TOOL_URL.fpsblindtestAbout },
+      ],
+      sections: [
+        {
+          h2: 'Tryby testu',
+          ul: [
+            'Zgadnij FPS: oglądasz animację i zgadujesz liczbę klatek na sekundę.',
+            'Który płynniejszy?: dwie animacje obok siebie, wskazujesz płynniejszą (A/B).',
+            'Debug FPS Slider: ręcznie ustawiasz FPS suwakiem od 2 do limitu monitora.',
+            'Wersje 3D: zgadywanie w arenie z ruchem, skokiem i strzelaniem do celów, porównanie dwóch scen 3D i suwak 3D.',
+          ],
+        },
+        {
+          h2: 'Dlaczego to ma sens',
+          p: [
+            'Bez ślepej próby łatwo o autosugestię. Test pomaga sprawdzić, czy realnie odróżniasz 60, 120, 144, 240 albo 360 FPS, zanim kupisz monitor 144, 240 czy 360 Hz albo zaczniesz zbijać ustawienia w grach e-sportowych. Testowane wartości: 30, 60, 120, 144, 180, 240, 280, 360, 400, 480, 500 i 600 FPS.',
+          ],
+        },
+        {
+          h2: 'Jak zacząć',
+          ol: [
+            'Otwórz fpsblindtest.vxh.pl. Odświeżanie monitora wykryje się samo albo ustawisz je ręcznie.',
+            'Wybierz tryb: Zgadnij FPS, Który płynniejszy? albo jedną z wersji 3D.',
+            'Po rundzie zobacz podsumowanie i pobierz wynik jako PNG.',
+          ],
+        },
+      ],
+      faq: [
+        { q: 'Czym jest FPS Blind Test?', a: 'Darmowym testem w przeglądarce, który sprawdza, czy widzisz różnicę między poziomami FPS, bez podawania ich z góry.' },
+        { q: 'Czy na monitorze 60 Hz sprawdzę 240 FPS?', a: 'Nie w pełni. Monitor pokaże najwyżej tyle klatek, ile ma Hz, dlatego test pokazuje tylko wartości do limitu Twojego ekranu.' },
+        { q: 'Czy trzeba coś instalować?', a: 'Nie, test działa w przeglądarce.' },
+        { q: 'Gdzie jest oficjalna strona?', a: 'Na https://fpsblindtest.vxh.pl/ (EN: https://fpsblindtest.vxh.pl/en/).' },
+      ],
+      related: ['intmouse', 'pliki', 'chat'],
     },
     lol: {
       id: 'lol',
@@ -639,7 +796,7 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
       id: 'home',
       kind: 'home',
       title: 'VXH – Visual eXtras Hub | OBS banners and overlays for streamers',
-      description: 'VXH – Visual eXtras Hub: free FACEIT and LoL banners, animated OBS overlays, LiveDelay (delay without reconnecting) and INTmouse - one mouse and keyboard across several PCs.',
+      description: 'VXH – Visual eXtras Hub: free FACEIT and LoL banners, animated OBS overlays, LiveDelay (delay without reconnecting), INTmouse - one mouse across several PCs, plus WiFi file transfer, E2E chat and FPS Blind Test.',
       h1: 'Visual eXtras Hub for streamers',
       lead: 'Free banner and animated overlay generators for OBS Studio and Streamlabs, LiveDelay - delay you turn on live without dropping the stream, and INTmouse - shared mouse and keyboard across PCs on your LAN.',
       eyebrow: 'VXH · Visual eXtras Hub',
@@ -895,7 +1052,148 @@ export const PAGES: Record<Lang, Record<PageId, Page>> = {
         { q: 'Where is the official site?', a: 'At https://intmouse.vxh.pl/. Releases: https://github.com/skullboypl/intmouse/releases/latest.' },
         { q: 'How much does it cost?', a: 'Free plan for two PCs (one monitor each). Pro: 9.99 PLN / month or 89 PLN / year. A 7-day full trial once per PC.' },
       ],
-      related: ['livedelay', 'about', 'faq'],
+      related: ['pliki', 'chat', 'livedelay'],
+    },
+    pliki: {
+      id: 'pliki',
+      kind: 'article',
+      title: 'pliki.vxh.pl: send files over WiFi with no app and no cloud | VXH',
+      description: 'pliki.vxh.pl sends files between phones, computers and tablets on the same WiFi. Peer-to-peer over WebRTC, nothing to install, no sign-up, no cloud upload.',
+      h1: 'pliki.vxh.pl - files over WiFi, no cloud',
+      lead: 'Open the page on two devices on the same network, pick the receiver and drop a file. The data goes straight between the devices; the server only helps them find each other.',
+      eyebrow: 'pliki.vxh.pl · LAN transfer',
+      cta: [
+        { label: 'Send a file on pliki.vxh.pl', href: TOOL_URL.pliki },
+        { label: 'Guides', href: TOOL_URL.plikiGuideEn },
+        { label: 'Source on GitHub', href: TOOL_URL.plikiRepo },
+      ],
+      sections: [
+        {
+          h2: 'What pliki.vxh.pl does',
+          ul: [
+            'Sends photos, videos and documents between phones, computers and tablets on one WiFi or LAN.',
+            'Runs in the browser: no app, no account, no USB cable, no cloud limits.',
+            'Peer-to-peer over WebRTC: files never reach the server, which is only used to find devices on the network.',
+            'Android and iPhone on one network without AirDrop. Large videos (MOV, MP4) arrive reliably through OPFS in Safari.',
+            'Installable as a PWA. Received files disappear when you close the tab.',
+          ],
+        },
+        {
+          h2: 'Who it is for',
+          p: [
+            'Anyone who wants to move a file from a phone to a computer, or between two computers at home or in the office, in a few seconds. Streamers use it to get clips and photos from the phone onto the editing PC without the cloud.',
+          ],
+        },
+        {
+          h2: 'Getting started',
+          ol: [
+            'Open pliki.vxh.pl on two devices on the same WiFi.',
+            'Pick the other device from the "Devices on the network" list.',
+            'Click the green button, drag files onto the device or drop them on the page. They show up under "Received files" on the other device.',
+          ],
+        },
+      ],
+      faq: [
+        { q: 'What is pliki.vxh.pl?', a: 'A free page for sending files between devices on the same WiFi or LAN, right in the browser.' },
+        { q: 'Do files go to the cloud?', a: 'No. Transfers are peer-to-peer over WebRTC on your local network. The server only helps devices find each other.' },
+        { q: 'Do I need to install anything?', a: 'No. A browser on both devices is enough. You can also add it to your home screen as a PWA.' },
+        { q: 'Does it work between Android and iPhone?', a: 'Yes, as long as both phones are on the same WiFi.' },
+        { q: 'Where is the official site?', a: 'At https://pliki.vxh.pl/. Code: https://github.com/skullboypl/pliki.vxh.pl.' },
+      ],
+      related: ['chat', 'intmouse', 'fpsblindtest'],
+    },
+    chat: {
+      id: 'chat',
+      kind: 'article',
+      title: 'chat.vxh.pl: private end-to-end encrypted chat rooms | VXH',
+      description: 'chat.vxh.pl gives you private, password-protected chat rooms with end-to-end encryption (AES-GCM). No account, invite links, several chats at once and a PWA. Messages are not stored.',
+      h1: 'chat.vxh.pl - private E2E chat rooms',
+      lead: 'Set a nickname, create a room with a password and send friends an invite link. The password is also the encryption key, so the server only relays encrypted data.',
+      eyebrow: 'chat.vxh.pl · E2E chat',
+      cta: [
+        { label: 'Open chat.vxh.pl', href: TOOL_URL.chat },
+        { label: 'How it works', href: TOOL_URL.chatHowEn },
+        { label: 'Source on GitHub', href: TOOL_URL.chatRepo },
+      ],
+      sections: [
+        {
+          h2: 'What chat.vxh.pl does',
+          ul: [
+            'Private rooms with a password and end-to-end encryption (AES-GCM, the key is derived from the password in your browser).',
+            'Invite links and real-time group chat.',
+            'Several chats at once: bubbles along the bottom on desktop, full screen on phones. Picture-in-Picture window in Chrome and Edge.',
+            'Images are compressed in the browser and kept locally, never written to the server disk.',
+            'No account: your nickname stays in the browser. Installable as a PWA.',
+          ],
+        },
+        {
+          h2: 'Privacy',
+          p: [
+            'Messages are not archived. When the last person leaves, the room disappears from the server. Logs hold no nicknames, passwords or message content. The chat is not moderated: it is an educational project and participants are responsible for what they write.',
+          ],
+        },
+        {
+          h2: 'Getting started',
+          ol: [
+            'Go to chat.vxh.pl and set a nickname.',
+            'Create a room or join one by entering its name and password.',
+            'Send friends the invite link. Without the right password nobody can read the messages.',
+          ],
+        },
+      ],
+      faq: [
+        { q: 'What is chat.vxh.pl?', a: 'A lightweight browser chat with private, password-protected rooms and end-to-end encryption. No sign-up.' },
+        { q: 'Are messages stored?', a: 'No. The server only relays them to people online in the room, and an empty room is deleted.' },
+        { q: 'What if I forget the room password?', a: 'Without it you cannot rejoin or read old messages. Ask the room creator for a new link.' },
+        { q: 'Does it work on phones?', a: 'Yes. On narrow screens the chat opens full screen, and you can install it as a PWA.' },
+        { q: 'Where is the official site?', a: 'At https://chat.vxh.pl/. Code: https://github.com/skullboypl/private-room-chat.' },
+      ],
+      related: ['pliki', 'intmouse', 'fpsblindtest'],
+    },
+    fpsblindtest: {
+      id: 'fpsblindtest',
+      kind: 'article',
+      title: 'FPS Blind Test: can you tell 60, 120 and 240 FPS apart? | VXH',
+      description: 'FPS Blind Test is a free smoothness test in the browser. Guess the FPS with no hints or compare two animations A/B, also in a 3D scene. From 30 to 600 FPS, results as a PNG.',
+      h1: 'FPS Blind Test - frame rate smoothness test',
+      lead: 'A blind test instead of placebo: you watch an animation and guess its frame rate, or pick the smoother of two. FPS levels match your monitor refresh rate.',
+      eyebrow: 'FPS Blind Test · monitor test',
+      cta: [
+        { label: 'Start the test on fpsblindtest.vxh.pl', href: TOOL_URL.fpsblindtestEn },
+        { label: 'About the FPS test', href: TOOL_URL.fpsblindtestAboutEn },
+      ],
+      sections: [
+        {
+          h2: 'Test modes',
+          ul: [
+            'Guess the FPS: watch an animation and guess its frames per second.',
+            'Which is smoother?: two animations side by side, you pick the smoother one (A/B).',
+            'Debug FPS Slider: set the FPS by hand from 2 up to your monitor limit.',
+            '3D versions: guessing in an arena with movement, jumping and target shooting, comparing two 3D scenes and a 3D slider.',
+          ],
+        },
+        {
+          h2: 'Why it makes sense',
+          p: [
+            'Without a blind test it is easy to fool yourself. The test shows whether you really tell 60, 120, 144, 240 or 360 FPS apart before you buy a 144, 240 or 360 Hz monitor or tune your esports game settings. Tested values: 30, 60, 120, 144, 180, 240, 280, 360, 400, 480, 500 and 600 FPS.',
+          ],
+        },
+        {
+          h2: 'Getting started',
+          ol: [
+            'Open fpsblindtest.vxh.pl. Your refresh rate is detected automatically, or you set it by hand.',
+            'Pick a mode: Guess the FPS, Which is smoother? or one of the 3D versions.',
+            'After a round, see the summary and download your result as a PNG.',
+          ],
+        },
+      ],
+      faq: [
+        { q: 'What is FPS Blind Test?', a: 'A free browser test that checks whether you can see the difference between frame rates without being told which is which.' },
+        { q: 'Can I test 240 FPS on a 60 Hz monitor?', a: 'Not really. A monitor shows at most as many frames as its refresh rate, so the test only offers values up to your screen limit.' },
+        { q: 'Do I need to install anything?', a: 'No, it runs in the browser.' },
+        { q: 'Where is the official site?', a: 'At https://fpsblindtest.vxh.pl/en/ (Polish: https://fpsblindtest.vxh.pl/).' },
+      ],
+      related: ['intmouse', 'pliki', 'chat'],
     },
     lol: {
       id: 'lol',
